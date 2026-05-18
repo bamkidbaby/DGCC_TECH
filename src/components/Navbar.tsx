@@ -24,11 +24,19 @@ export default function Navbar() {
         <div className="flex items-center justify-between gap-4">
           <Link to="/" className="flex items-center gap-3">
             <div className="rounded-2xl border border-white/10 bg-white/6 p-2">
-              <img src={logo} alt="DGCC TECH" className="h-9 w-9 object-contain sm:h-10 sm:w-10" />
+              <img
+                src={logo}
+                alt="DGCC TECH"
+                className="h-9 w-9 object-contain sm:h-10 sm:w-10"
+              />
             </div>
             <div>
-              <p className="editorial-title text-sm font-black tracking-tight text-white">DGCC TECH</p>
-              <p className="text-[11px] uppercase tracking-[0.14em] text-white/45">Connecting the dots in tech</p>
+              <p className="editorial-title text-sm font-black tracking-tight text-white">
+                DGCC TECH
+              </p>
+              <p className="text-[5px] sm:text-[6px] md:text-[11px] uppercase tracking-[0.14em] text-white/45">
+                Connecting the dots in tech
+              </p>
             </div>
           </Link>
 
@@ -45,7 +53,9 @@ export default function Navbar() {
                     key={item.label}
                     to={item.href}
                     className={`rounded-full px-4 py-2 text-sm font-medium transition ${
-                      active ? "bg-white text-[#050816]" : "text-white/72 hover:bg-white/8 hover:text-white"
+                      active
+                        ? "bg-white text-[#050816]"
+                        : "text-white/72 hover:bg-white/8 hover:text-white"
                     }`}
                   >
                     {item.label}
@@ -67,13 +77,19 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/6 text-white xl:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/6 text-black xl:hidden"
             aria-label="Toggle navigation"
           >
             <span className="relative block h-4 w-5">
-              <span className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition ${open ? "translate-y-[7px] rotate-45" : ""}`} />
-              <span className={`absolute left-0 top-[7px] h-0.5 w-5 rounded-full bg-current transition ${open ? "opacity-0" : ""}`} />
-              <span className={`absolute left-0 top-[14px] h-0.5 w-5 rounded-full bg-current transition ${open ? "-translate-y-[7px] -rotate-45" : ""}`} />
+              <span
+                className={`absolute left-0 top-0 h-0.5 w-5 rounded-full bg-current transition ${open ? "translate-y-[7px] rotate-45" : ""}`}
+              />
+              <span
+                className={`absolute left-0 top-[7px] h-0.5 w-5 rounded-full bg-current transition ${open ? "opacity-0" : ""}`}
+              />
+              <span
+                className={`absolute left-0 top-[14px] h-0.5 w-5 rounded-full bg-current transition ${open ? "-translate-y-[7px] -rotate-45" : ""}`}
+              />
             </span>
           </button>
         </div>

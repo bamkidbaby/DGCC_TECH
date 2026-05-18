@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Edu+NSW+ACT+Cursive:wght@400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 @import "tailwindcss";
 
@@ -21,7 +21,7 @@ body {
   min-width: 320px;
   background: var(--dgcc-background);
   color: var(--dgcc-text);
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "Inter", sans-serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
@@ -53,12 +53,7 @@ button,
 input[type="button"],
 input[type="submit"],
 input[type="reset"],
-a[class*="rounded"][class*="bg-"],
-button *,
-input[type="button"] *,
-input[type="submit"] *,
-input[type="reset"] *,
-a[class*="rounded"][class*="bg-"] * {
+a[class*="rounded"][class*="bg-"][class*="text-white"] {
   color: #ffffff !important;
 }
 
@@ -66,11 +61,6 @@ button:hover,
 input[type="button"]:hover,
 input[type="submit"]:hover,
 input[type="reset"]:hover,
-a[class*="rounded"][class*="bg-"]:hover,
-button:hover *,
-input[type="button"]:hover *,
-input[type="submit"]:hover *,
-input[type="reset"]:hover *,
-a[class*="rounded"][class*="bg-"]:hover * {
+a[class*="rounded"][class*="bg-"][class*="text-white"]:hover {
   color: #000000 !important;
 }
