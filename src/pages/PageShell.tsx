@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 interface PageShellProps {
   title: string;
   subtitle: string;
@@ -9,6 +11,10 @@ export default function PageShell({
   subtitle,
   children,
 }: PageShellProps) {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <main className="min-h-screen bg-white px-6 py-16 text-slate-900 sm:px-8 lg:px-12">
       <div className="mx-auto max-w-6xl space-y-6">

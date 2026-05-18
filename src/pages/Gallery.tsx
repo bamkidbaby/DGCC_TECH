@@ -1,58 +1,44 @@
-/* =========================================================
-   GALLERY PAGE — src/pages/Gallery.tsx
-========================================================= */
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import CorporatePageHero from "../components/CorporatePageHero";
+import { CTASection, GalleryGrid, SectionHeader, ShellSection, stagger } from "../components/CorporateUI";
+import { galleryImages } from "../data/siteContent";
 
-import Navbar from "../components/Navbar";
-import { Footer, PageHero, Section, SectionHeader } from "../components/UI";
+export default function Gallery() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
-const images = [
-  "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1552664730-d307ca884978?q=80&w=1200&auto=format&fit=crop",
-  "https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1200&auto=format&fit=crop",
-];
-
-export default function GalleryPage() {
   return (
     <>
-      <Navbar />
+      <CorporatePageHero
+        badge="DGCC TECH Gallery"
+        title="A visual snapshot of the work environment behind the services."
+        subtitle="The gallery keeps the site grounded in real technology, training, and support activity while staying clean and business-focused."
+        image="https://images.unsplash.com/photo-1497366412874-3415097a27e7?auto=format&fit=crop&w=1800&q=80"
+        cta={{ label: "Start a project", href: "/contact" }}
+        secondaryCta={{ label: "View services", href: "/services" }}
+      />
 
-      <main>
-        <PageHero
-          badge="Gallery"
-          title="A look into"
-          highlight="our work."
-          desc="Projects, training sessions, branding and digital solutions by DGCC TECH."
-          cta="Contact Us"
-          ctaHref="/contact"
-        />
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Showcase"
+            title="Clean imagery that supports the company story."
+            body="Rather than filling the page with decorative effects, the gallery shows the kind of work, learning, and service atmosphere the business operates in."
+            align="split"
+          />
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }} className="mt-12">
+            <GalleryGrid items={galleryImages} />
+          </motion.div>
+        </div>
+      </ShellSection>
 
-        <Section className="bg-[#f8fafc] py-24 px-4 sm:px-6 lg:px-12">
-          <div className="mx-auto max-w-7xl">
-            <SectionHeader
-              badge="Our Gallery"
-              title="Captured"
-              highlight="moments."
-            />
-
-            <div className="mt-14 columns-1 gap-6 sm:columns-2 lg:columns-3">
-              {images.map((image, i) => (
-                <div key={i} className="mb-6 overflow-hidden rounded-[32px]">
-                  <img
-                    src={image}
-                    alt="DGCC TECH"
-                    className="w-full object-cover transition-transform duration-700 hover:scale-105"
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
-        </Section>
-      </main>
-
-      <Footer />
+      <CTASection
+        title="If the company style feels like the standard you want, let’s talk."
+        body="DGCC TECH can bring that same clarity to your website, design work, training setup, or support request."
+        primary={{ label: "Contact DGCC TECH", href: "/contact" }}
+      />
     </>
   );
 }

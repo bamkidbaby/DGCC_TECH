@@ -1,35 +1,183 @@
-import AboutSection from "../components/home/AboutSection";
-import FAQSection from "../components/home/FAQSection";
-import FooterSection from "../components/Footer";
-import HeroSection from "../components/home/HeroSection";
-import PricingSection from "../components/home/PricingSection";
-import ProcessSection from "../components/home/ProcessSection";
-import ServicesOverview from "../components/home/ServicesOverview";
-import ServicesStrip from "../components/home/ServicesStrip";
-import TestimonialsSection from "../components/home/TestimonialsSection";
-import WhyChooseUs from "../components/home/WhyChooseUs";
-import ScrollToTopButton from "../components/ScrollToTopButton";
+import { useEffect } from "react";
+import { motion } from "framer-motion";
+import CorporatePageHero from "../components/CorporatePageHero";
+import {
+  CTASection,
+  CourseGrid,
+  FAQAccordion,
+  GalleryGrid,
+  ProcessTimeline,
+  SectionHeader,
+  ServiceCard,
+  ShellSection,
+  StatsStrip,
+  SurfaceCard,
+  revealUp,
+  stagger,
+} from "../components/CorporateUI";
+import { brandStats, faqs, galleryImages, serviceItems, trainingItems } from "../data/siteContent";
+
+const homeProcess = [
+  {
+    title: "Understand the real need",
+    detail: "We start with the business problem, learner goal, or support issue before recommending a route.",
+  },
+  {
+    title: "Match the right service mix",
+    detail: "Training, design, support, repairs, and registration services can be combined around one client need.",
+  },
+  {
+    title: "Deliver clearly and professionally",
+    detail: "The final experience stays clean, practical, and easy to follow from first contact to final handover.",
+  },
+];
+
+const valuePoints = [
+  "A clean corporate presentation that helps clients trust the brand quickly.",
+  "Practical technology support for both individuals and organizations.",
+  "Training offers with pricing, detail pages, and direct WhatsApp enrollment.",
+  "A service structure built for real local business and student needs.",
+];
 
 export default function Home() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
-    <div id="top" className="scroll-smooth bg-white">
-      <div className="relative overflow-hidden bg-gradient-to-br from-[#eff6ff] via-[#f8f1ff] to-[#fff4ed]">
-        <div className="absolute left-[-200px] top-[-150px] h-[500px] w-[500px] rounded-full bg-[#2d3292]/20 blur-3xl" />
-        <div className="absolute bottom-[-200px] right-[-200px] h-[500px] w-[500px] rounded-full bg-purple-400/20 blur-3xl" />
+    <>
+      <CorporatePageHero
+        badge="DGCC TECH"
+        title="Technology services, training, and support built for real business use."
+        subtitle="DGCC TECH helps clients with websites, design, training, repairs, registrations, and digital support through a clean corporate experience that feels credible from the first visit."
+        image="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1800&q=80"
+        cta={{ label: "Start a project", href: "/contact" }}
+        secondaryCta={{ label: "Explore training", href: "/training" }}
+        stats={brandStats.slice(0, 3)}
+      />
 
-        <HeroSection />
-        <ServicesStrip />
-      </div>
+      <ShellSection className="pt-10">
+        <div className="mx-auto max-w-7xl">
+          <StatsStrip items={brandStats} />
+        </div>
+      </ShellSection>
 
-      <AboutSection />
-      <ServicesOverview />
-      <WhyChooseUs />
-      <ProcessSection />
-      <TestimonialsSection />
-      <PricingSection />
-      <FAQSection />
-      <FooterSection />
-      <ScrollToTopButton />
-    </div>
+      <ShellSection>
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+          <SurfaceCard className="p-7 sm:p-8">
+            <SectionHeader
+              eyebrow="Who we serve"
+              title="A dependable digital partner for companies, students, and growing teams."
+              body="DGCC TECH combines technical delivery with business-friendly communication so every page, service, and support line feels more useful and more professional."
+            />
+          </SurfaceCard>
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="grid gap-4 sm:grid-cols-2"
+          >
+            {valuePoints.map((item) => (
+              <motion.div key={item} variants={revealUp}>
+                <SurfaceCard className="h-full p-6">
+                  <p className="text-sm leading-7 text-[#6b7280]">{item}</p>
+                </SurfaceCard>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </ShellSection>
+
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Services"
+            title="Business services presented with enough detail to feel real."
+            body="Every major service has its own dedicated detail page so visitors can move from overview to deeper understanding without friction."
+            align="split"
+          />
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.12 }}
+            className="mt-12 grid gap-6 lg:grid-cols-3"
+          >
+            {serviceItems.slice(0, 3).map((item) => (
+              <ServiceCard
+                key={item.slug}
+                title={item.title}
+                summary={item.summary}
+                image={item.image}
+                href={`/services/${item.slug}`}
+                eyebrow={item.eyebrow}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </ShellSection>
+
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Training"
+            title="Courses with clear pricing and direct WhatsApp enrollment."
+            body="The training section is structured like a real commercial offer, with dedicated course pages, pricing visibility, and a simple enrollment path."
+            align="split"
+          />
+          <div className="mt-12">
+            <CourseGrid items={trainingItems} />
+          </div>
+        </div>
+      </ShellSection>
+
+      <ShellSection>
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+          <div>
+            <SectionHeader
+              eyebrow="How we work"
+              title="A straightforward process that keeps delivery organized."
+              body="DGCC TECH keeps the experience clear because clients should understand what is happening, what comes next, and how to move forward."
+            />
+          </div>
+          <ProcessTimeline items={homeProcess} />
+        </div>
+      </ShellSection>
+
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Gallery"
+            title="A simple visual layer that shows the work environment behind the services."
+            body="The gallery supports the brand with clean, business-oriented imagery rather than decorative filler."
+            align="split"
+          />
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="mt-12">
+            <GalleryGrid items={galleryImages} />
+          </motion.div>
+        </div>
+      </ShellSection>
+
+      <ShellSection>
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+          <div>
+            <SectionHeader
+              eyebrow="Frequently asked"
+              title="Clear answers for the questions clients usually ask first."
+              body="The website should reduce hesitation, especially around training, support, and how services are delivered."
+            />
+          </div>
+          <FAQAccordion items={faqs} />
+        </div>
+      </ShellSection>
+
+      <CTASection
+        title="Need a technology partner that can support both delivery and day-to-day business needs?"
+        body="Use the contact page to discuss websites, design, training, repairs, registration support, or a broader combination of services."
+        primary={{ label: "Contact DGCC TECH", href: "/contact" }}
+        secondary={{ label: "View all services", href: "/services" }}
+      />
+    </>
   );
 }

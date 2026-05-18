@@ -1,18 +1,13 @@
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
+import type { ReactNode } from "react";
+import CorporateNavbar from "../components/CorporateNavbar";
+import CorporateFooter from "../components/CorporateFooter";
 
-export default function MainLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function MainLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      <Navbar />
-
-      <main className="min-h-screen pt-[88px]">{children}</main>
-
-      <Footer />
+      <CorporateNavbar />
+      <main className="min-h-screen bg-white">{children}</main>
+      <CorporateFooter />
     </>
   );
 }

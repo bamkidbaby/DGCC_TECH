@@ -1,201 +1,82 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
-import {
-  Footer,
-  PageHero,
-  CTABanner,
-  Section,
-  SectionHeader,
-  stagger,
-  childFade,
-} from "../components/UI";
+import CorporatePageHero from "../components/CorporatePageHero";
+import { CTASection, SectionHeader, ShellSection, StatsStrip, SurfaceCard, revealUp, stagger } from "../components/CorporateUI";
+import { brandStats } from "../data/siteContent";
 
-import {
-  FaCheckCircle,
-  FaLaptopCode,
-  FaShieldAlt,
-  FaPrint,
-} from "react-icons/fa";
-
-const values = [
-  {
-    icon: <FaLaptopCode />,
-    title: "Modern Solutions",
-    desc: "We build digital solutions with modern tools, clean design and reliable technology.",
-  },
-  {
-    icon: <FaShieldAlt />,
-    title: "Trusted Training",
-    desc: "From cybersecurity to CBT preparation, we equip students with practical skills.",
-  },
-  {
-    icon: <FaPrint />,
-    title: "Fast Service",
-    desc: "Printing, registrations and repairs delivered quickly without compromising quality.",
-  },
+const principles = [
+  "Present technology services with clarity and professionalism.",
+  "Support both business clients and learners with practical guidance.",
+  "Build trust through clean communication, not visual noise.",
 ];
 
-const stats = [
-  { value: "500+", label: "Students Trained" },
-  { value: "1k+", label: "Projects Completed" },
-  { value: "24/7", label: "Support Access" },
-  { value: "99%", label: "Client Satisfaction" },
-];
+export default function About() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
-export default function AboutPage() {
   return (
     <>
-      <Navbar />
+      <CorporatePageHero
+        badge="About DGCC TECH"
+        title="A technology company focused on practical outcomes and clean communication."
+        subtitle="DGCC TECH exists to help people and organizations handle digital work, training, support, and operational tasks through a more dependable and business-ready experience."
+        image="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1800&q=80"
+        cta={{ label: "Talk to our team", href: "/contact" }}
+        secondaryCta={{ label: "Explore services", href: "/services" }}
+        stats={brandStats.slice(1)}
+      />
 
-      <main>
-        <PageHero
-          badge="About DGCC TECH"
-          title="Technology made"
-          highlight="simple."
-          desc="DGCC TECH is a modern digital solutions hub helping students, individuals and businesses thrive with technology."
-          cta="Contact Us"
-          ctaHref="/contact"
-        />
-
-        <Section className="bg-white py-28 px-4 sm:px-6 lg:px-12">
-          <div className="mx-auto max-w-7xl">
-            <div className="grid gap-16 lg:grid-cols-[1fr_520px] items-center">
-              <div>
-                <SectionHeader
-                  badge="Who We Are"
-                  title="Connecting the"
-                  highlight="dots in tech."
-                  center={false}
-                />
-
-                <p className="mt-8 text-base leading-relaxed text-gray-600">
-                  DGCC TECH combines technology, creativity and practical
-                  solutions into one modern digital hub. From ICT training and
-                  repairs to web development and branding, we help people
-                  confidently navigate the digital world.
-                </p>
-
-                <div className="mt-10 grid gap-5 sm:grid-cols-2">
-                  {[
-                    "ICT Training",
-                    "Web Development",
-                    "Graphic Design",
-                    "Computer Repairs",
-                    "Cybersecurity",
-                    "Online Registrations",
-                  ].map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-3 rounded-2xl border border-gray-200 bg-[#fafafa] p-4"
-                    >
-                      <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#2d3292]/10 text-[#2d3292]">
-                        <FaCheckCircle />
-                      </div>
-
-                      <p className="text-sm font-semibold text-gray-800">
-                        {item}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="relative overflow-hidden rounded-[40px]">
-                <img
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop"
-                  alt="DGCC TECH"
-                  className="h-[620px] w-full object-cover"
-                />
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
-
-                <div className="absolute bottom-8 left-8 right-8 rounded-3xl border border-white/10 bg-white/10 p-6 backdrop-blur-xl">
-                  <p className="text-xs uppercase tracking-[0.2em] text-white/70">
-                    DGCC TECH
-                  </p>
-
-                  <h3 className="mt-3 text-3xl font-black text-white">
-                    Your trusted tech partner.
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Section>
-
-        <Section className="bg-[#f8fafc] py-24 px-4 sm:px-6 lg:px-12">
-          <div className="mx-auto max-w-6xl">
+      <ShellSection>
+        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
+          <SurfaceCard className="p-7 sm:p-8">
             <SectionHeader
-              badge="Our Values"
-              title="Built on"
-              highlight="excellence."
+              eyebrow="Company overview"
+              title="DGCC TECH brings multiple digital and technical support lines under one clear brand."
+              body="That includes websites, design, training, computer support, registrations, and related services that people often need from one dependable source."
             />
-
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mt-14 grid gap-6 md:grid-cols-3"
-            >
-              {values.map((value) => (
-                <motion.div
-                  key={value.title}
-                  variants={childFade}
-                  className="rounded-[32px] border border-gray-200 bg-white p-8 shadow-sm"
-                >
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-[#2d3292]/10 text-2xl text-[#2d3292]">
-                    {value.icon}
-                  </div>
-
-                  <h3 className="mt-6 text-xl font-black text-gray-900">
-                    {value.title}
-                  </h3>
-
-                  <p className="mt-4 text-sm leading-relaxed text-gray-500">
-                    {value.desc}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
-        </Section>
-
-        <Section className="bg-white py-24 px-4 sm:px-6 lg:px-12">
-          <div className="mx-auto max-w-6xl">
-            <SectionHeader
-              badge="Our Impact"
-              title="Numbers that"
-              highlight="matter."
+          </SurfaceCard>
+          <SurfaceCard className="overflow-hidden">
+            <img
+              src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80"
+              alt="DGCC TECH workspace"
+              className="h-full min-h-[340px] w-full object-cover"
             />
+          </SurfaceCard>
+        </div>
+      </ShellSection>
 
-            <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-              {stats.map((stat) => (
-                <div
-                  key={stat.label}
-                  className="rounded-3xl border border-gray-200 bg-[#fafafa] p-8 text-center"
-                >
-                  <h3 className="text-5xl font-black text-[#2d3292]">
-                    {stat.value}
-                  </h3>
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <StatsStrip items={brandStats} />
+        </div>
+      </ShellSection>
 
-                  <p className="mt-3 text-sm font-semibold text-gray-500">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </Section>
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="Principles"
+            title="Three ideas guide how the company shows up online and serves clients."
+            body="The goal is to keep the experience useful, credible, and easy to trust."
+            align="split"
+          />
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-12 grid gap-6 lg:grid-cols-3">
+            {principles.map((principle) => (
+              <motion.div key={principle} variants={revealUp}>
+                <SurfaceCard className="h-full p-7">
+                  <p className="text-lg font-semibold leading-8 text-black">{principle}</p>
+                </SurfaceCard>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </ShellSection>
 
-        <CTABanner
-          title="Ready to work with DGCC TECH?"
-          desc="Let's help you grow with technology."
-          cta="Get Started"
-        />
-      </main>
-
-      <Footer />
+      <CTASection
+        title="If you need technology support that feels more organized and more professional, DGCC TECH is built for that."
+        body="The team can support one focused request or help shape a broader service path around your business or training need."
+        primary={{ label: "Start a conversation", href: "/contact" }}
+      />
     </>
   );
 }

@@ -1,188 +1,79 @@
-/* =========================================================
-   src/pages/Services.tsx
-========================================================= */
-
+import { useEffect } from "react";
 import { motion } from "framer-motion";
-import Navbar from "../components/Navbar";
+import CorporatePageHero from "../components/CorporatePageHero";
+import { CTASection, ProcessTimeline, SectionHeader, ServiceCard, ShellSection, stagger } from "../components/CorporateUI";
+import { serviceItems } from "../data/siteContent";
 
-import {
-  Footer,
-  PageHero,
-  CTABanner,
-  Section,
-  SectionHeader,
-  stagger,
-  childFade,
-} from "../components/UI";
+export default function Services() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
 
-import { FaArrowRight } from "react-icons/fa";
-
-/* =========================================================
-   SERVICES DATA
-========================================================= */
-
-const services = [
-  {
-    title: "Website Design",
-    slug: "web-design",
-    image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=1400&auto=format&fit=crop",
-    desc: "Modern responsive websites for businesses, brands and organisations.",
-    color: "#2563eb",
-  },
-
-  {
-    title: "Graphic Design",
-    slug: "graphic-design",
-    image:
-      "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?q=80&w=1400&auto=format&fit=crop",
-    desc: "Creative branding, flyers, social media graphics and print materials.",
-    color: "#db2777",
-  },
-
-  {
-    title: "Computer Repairs",
-    slug: "computer-services",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1400&auto=format&fit=crop",
-    desc: "Laptop repairs, software installation and device troubleshooting.",
-    color: "#16a34a",
-  },
-
-  {
-    title: "Printing & Photocopy",
-    slug: "printing",
-    image:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?q=80&w=1400&auto=format&fit=crop",
-    desc: "High-quality printing, photocopy and document services.",
-    color: "#ea580c",
-  },
-
-  {
-    title: "Cybersecurity",
-    slug: "cybersecurity",
-    image:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=1400&auto=format&fit=crop",
-    desc: "Digital security services and cybersecurity awareness solutions.",
-    color: "#7c3aed",
-  },
-
-  {
-    title: "Online Registrations",
-    slug: "online-registrations",
-    image:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1400&auto=format&fit=crop",
-    desc: "JAMB, WAEC, recruitment forms and online application assistance.",
-    color: "#0891b2",
-  },
-];
-
-/* =========================================================
-   SERVICES PAGE
-========================================================= */
-
-export default function ServicesPage() {
   return (
     <>
-      <Navbar />
+      <CorporatePageHero
+        badge="DGCC TECH Services"
+        title="Business and technical services structured like a real company offering."
+        subtitle="The services page brings together digital, design, support, and operational capabilities in one clean corporate layout with dedicated detail pages for each offer."
+        image="https://images.unsplash.com/photo-1558655146-d09347e92766?auto=format&fit=crop&w=1800&q=80"
+        cta={{ label: "Talk about your project", href: "/contact" }}
+        secondaryCta={{ label: "Explore training", href: "/training" }}
+        stats={serviceItems[0].stats}
+      />
 
-      <main>
-        <PageHero
-          badge="DGCC TECH Services"
-          title="Everything you need,"
-          highlight="one place."
-          desc="Professional digital services designed for students, individuals and businesses."
-          cta="Get Started"
-          ctaHref="/contact"
-        />
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
+            eyebrow="All services"
+            title="Each service leads to its own full detail page."
+            body="That gives visitors a better view of what DGCC TECH does, who each offer is for, and how the work typically moves from request to delivery."
+            align="split"
+          />
+          <motion.div
+            variants={stagger}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            className="mt-12 grid gap-6 lg:grid-cols-3"
+          >
+            {serviceItems.map((item) => (
+              <ServiceCard
+                key={item.slug}
+                title={item.title}
+                summary={item.summary}
+                image={item.image}
+                href={`/services/${item.slug}`}
+                eyebrow={item.eyebrow}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </ShellSection>
 
-        <Section className="bg-[#f8fafc] py-28 px-4 sm:px-6 lg:px-12">
-          <div className="mx-auto max-w-7xl">
+      <ShellSection>
+        <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">
+          <div>
             <SectionHeader
-              badge="Our Services"
-              title="Explore our"
-              highlight="solutions."
-              desc="Modern digital services tailored for growth, productivity and creativity."
+              eyebrow="Delivery approach"
+              title="The service model stays simple even when the work spans multiple needs."
+              body="Clients can come in for one request and still receive joined-up support when a wider service combination makes sense."
             />
-
-            <motion.div
-              variants={stagger}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="mt-16 grid gap-7 md:grid-cols-2 xl:grid-cols-3"
-            >
-              {services.map((service) => (
-                <motion.a
-                  key={service.slug}
-                  href={`/services/${service.slug}`}
-                  variants={childFade}
-                  whileHover={{ y: -8 }}
-                  className="group overflow-hidden rounded-[36px] border border-gray-200 bg-white shadow-sm transition-all duration-500 hover:shadow-2xl"
-                >
-                  {/* IMAGE */}
-                  <div className="relative h-[280px] overflow-hidden">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
-
-                    <div
-                      className="absolute left-6 top-6 rounded-full px-4 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-white"
-                      style={{
-                        background: service.color,
-                      }}
-                    >
-                      DGCC TECH
-                    </div>
-
-                    <div className="absolute bottom-6 left-6 right-6">
-                      <h3 className="text-3xl font-black text-white">
-                        {service.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* CONTENT */}
-                  <div className="p-7">
-                    <p className="text-sm leading-relaxed text-gray-500">
-                      {service.desc}
-                    </p>
-
-                    <div className="mt-7 flex items-center justify-between">
-                      <p className="text-sm font-bold text-gray-900">
-                        View Service
-                      </p>
-
-                      <div
-                        className="flex h-12 w-12 items-center justify-center rounded-2xl text-white transition-transform duration-300 group-hover:translate-x-1"
-                        style={{
-                          background: service.color,
-                        }}
-                      >
-                        <FaArrowRight />
-                      </div>
-                    </div>
-                  </div>
-                </motion.a>
-              ))}
-            </motion.div>
           </div>
-        </Section>
+          <ProcessTimeline
+            items={[
+              { title: "Clarify the request", detail: "We define the business need, urgency, and likely service fit." },
+              { title: "Scope the right route", detail: "A focused service plan is shaped around the actual requirement." },
+              { title: "Execute and support", detail: "The work is delivered with clear communication and practical next steps." },
+            ]}
+          />
+        </div>
+      </ShellSection>
 
-        <CTABanner
-          title="Need a custom solution?"
-          desc="Talk to DGCC TECH and let's build something amazing together."
-          cta="Contact Us"
-          secondary="Chat on WhatsApp"
-          secondaryHref="https://wa.me/2348000000000"
-        />
-      </main>
-
-      <Footer />
+      <CTASection
+        title="Need one service or a broader digital support package?"
+        body="DGCC TECH can help you move from a single request into a more complete service flow when the project calls for it."
+        primary={{ label: "Contact DGCC TECH", href: "/contact" }}
+      />
     </>
   );
 }
