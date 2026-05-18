@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { FaCheckCircle, FaArrowRight, FaBolt } from "react-icons/fa";
 
+type Category = "training" | "repairs" | "design";
+
 const plans = [
   {
     id: "starter",
@@ -64,16 +66,16 @@ const plans = [
   },
 ];
 
-const categories = ["training", "repairs", "design"];
+const categories: Category[] = ["training", "repairs", "design"];
 
-const labels = {
+const labels: Record<Category, string> = {
   training: "ICT Training",
   repairs: "Repairs",
   design: "Design",
 };
 
 export default function Pricing() {
-  const [category, setCategory] = useState("training");
+  const [category, setCategory] = useState<Category>("training");
 
   return (
     <section className="relative overflow-hidden bg-white py-28 px-4 sm:px-6 lg:px-12">

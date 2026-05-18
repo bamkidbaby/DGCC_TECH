@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { FaPlus, FaMinus } from "react-icons/fa";
 
 const faqs = [
@@ -52,31 +53,31 @@ const containerVariants = {
   },
 };
 
-const itemVariants = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as any },
   },
 };
 
-const answerVariants = {
+const answerVariants: Variants = {
   hidden: { height: 0, opacity: 0 },
   visible: {
     height: "auto",
     opacity: 1,
-    transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.3, ease: [0.4, 0, 0.2, 1] as any },
   },
   exit: {
     height: 0,
     opacity: 0,
-    transition: { duration: 0.22, ease: [0.4, 0, 0.2, 1] },
+    transition: { duration: 0.22, ease: [0.4, 0, 0.2, 1] as any },
   },
 };
 
 export default function FAQ() {
-  const [open, setOpen] = useState(null);
+  const [open, setOpen] = useState<number | null>(null);
 
   return (
     <section className="relative overflow-hidden bg-[#f7f7f9] py-24 px-4 sm:px-6 lg:px-12">

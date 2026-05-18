@@ -125,7 +125,7 @@ const services = [
 export default function Services() {
   const [active, setActive] = useState(services[0].id);
 
-  const current = services.find((s) => s.id === active);
+  const current = services.find((s) => s.id === active) ?? services[0];
 
   return (
     <section className="relative overflow-hidden bg-[#f8faff] py-24">

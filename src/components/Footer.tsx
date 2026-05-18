@@ -98,8 +98,10 @@ const contactItems = [
 ];
 
 /* ─── hook ──────────────────────────────────────────────── */
-function useInView(threshold = 0.12) {
-  const ref = useRef(null);
+function useInView(
+  threshold = 0.12,
+): [React.RefObject<HTMLDivElement>, boolean] {
+  const ref = useRef<HTMLDivElement>(null!);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;
@@ -120,7 +122,7 @@ function useInView(threshold = 0.12) {
 }
 
 /* ─── fade-up helper ────────────────────────────────────── */
-function fadeUp(visible, delay = "0ms") {
+function fadeUp(visible: boolean, delay = "0ms") {
   return [
     "transition-[opacity,transform] duration-[650ms] ease-[cubic-bezier(.22,1,.36,1)]",
     `delay-[${delay}]`,

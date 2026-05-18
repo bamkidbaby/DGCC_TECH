@@ -4,7 +4,7 @@
 
 import { useState } from "react";
 import Navbar from "../components/Navbar";
-import { Footer, PageHero, Section, SectionHeader } from "../components/UI";
+import { Footer, PageHero, Section } from "../components/UI";
 
 import {
   FaWhatsapp,

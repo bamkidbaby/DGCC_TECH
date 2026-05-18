@@ -3,13 +3,14 @@
 ========================================================= */
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import { FaArrowRight, FaWhatsapp, FaCheckCircle } from "react-icons/fa";
 
 /* =========================================================
    ANIMATIONS
 ========================================================= */
 
-export const stagger = {
+export const stagger: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -19,7 +20,7 @@ export const stagger = {
   },
 };
 
-export const childFade = {
+export const childFade: Variants = {
   hidden: {
     opacity: 0,
     y: 24,
@@ -31,7 +32,7 @@ export const childFade = {
 
     transition: {
       duration: 0.45,
-      ease: "easeOut",
+      ease: [0.22, 1, 0.36, 1] as any,
     },
   },
 };

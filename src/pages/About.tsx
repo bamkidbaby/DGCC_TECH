@@ -15,8 +15,6 @@ import {
   FaLaptopCode,
   FaShieldAlt,
   FaPrint,
-  FaUsers,
-  FaTools,
 } from "react-icons/fa";
 
 const values = [
