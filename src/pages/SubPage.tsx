@@ -12,7 +12,13 @@ import {
   SurfaceCard,
   WhatsAppCTAButton,
 } from "../components/CorporateUI";
-import { serviceItems, trainingItems, type CourseItem, type ShowcaseItem } from "../data/siteContent";
+import {
+  serviceItems,
+  trainingItems,
+  type ArticleSection,
+  type CourseItem,
+  type ShowcaseItem,
+} from "../data/siteContent";
 
 function getCollection(category: "services" | "training") {
   return category === "services" ? serviceItems : trainingItems;
@@ -26,12 +32,22 @@ function isCourse(item: ShowcaseItem): item is CourseItem {
   return item.kind === "course";
 }
 
-export default function SubPage({ category }: { category: "services" | "training" }) {
+export default function SubPage({
+  category,
+}: {
+  category: "services" | "training";
+}) {
   const { slug } = useParams();
-  const item = useMemo(() => findItem(getCollection(category), slug), [category, slug]);
+  const item = useMemo(
+    () => findItem(getCollection(category), slug),
+    [category, slug],
+  );
   const courseItem = isCourse(item) ? item : null;
   const relatedItems = useMemo(
-    () => getCollection(category).filter((entry) => entry.slug !== item.slug).slice(0, 3),
+    () =>
+      getCollection(category)
+        .filter((entry: ShowcaseItem) => entry.slug !== item.slug)
+        .slice(0, 3),
     [category, item.slug],
   );
 
@@ -51,7 +67,11 @@ export default function SubPage({ category }: { category: "services" | "training
             ? { label: "Discuss this service", href: "/contact" }
             : { label: "Ask about this course", href: "/contact" }
         }
-        secondaryCta={{ label: category === "services" ? "Back to services" : "Back to training", href: category === "services" ? "/services" : "/training" }}
+        secondaryCta={{
+          label:
+            category === "services" ? "Back to services" : "Back to training",
+          href: category === "services" ? "/services" : "/training",
+        }}
         stats={item.stats}
       />
 
@@ -65,12 +85,18 @@ export default function SubPage({ category }: { category: "services" | "training
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.2fr_0.8fr]">
           <div className="space-y-8">
             <SurfaceCard className="overflow-hidden">
-              <img src={item.image} alt={item.title} className="h-full min-h-[360px] w-full object-cover" />
+              <img
+                src={item.image}
+                alt={item.title}
+                className="h-full min-h-[360px] w-full object-cover"
+              />
             </SurfaceCard>
 
             <SurfaceCard className="p-7 sm:p-8">
               <SectionHeader
-                eyebrow={category === "services" ? "Overview" : "Course details"}
+                eyebrow={
+                  category === "services" ? "Overview" : "Course details"
+                }
                 title={
                   category === "services"
                     ? "A dedicated service page with enough depth to support a real enquiry."
@@ -83,12 +109,17 @@ export default function SubPage({ category }: { category: "services" | "training
                 }
               />
               <div className="mt-8 space-y-8">
-                {item.articleSections.map((section) => (
+                {item.articleSections.map((section: ArticleSection) => (
                   <div key={section.title}>
-                    <h3 className="text-xl font-semibold text-black">{section.title}</h3>
+                    <h3 className="text-xl font-semibold text-black">
+                      {section.title}
+                    </h3>
                     <div className="mt-3 space-y-4">
-                      {section.paragraphs.map((paragraph) => (
-                        <p key={paragraph} className="text-base leading-8 text-[#6b7280]">
+                      {section.paragraphs.map((paragraph: string) => (
+                        <p
+                          key={paragraph}
+                          className="text-base leading-8 text-[#6b7280]"
+                        >
                           {paragraph}
                         </p>
                       ))}
@@ -102,18 +133,29 @@ export default function SubPage({ category }: { category: "services" | "training
           <div className="space-y-6">
             <SurfaceCard className="p-6">
               <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]">
-                {category === "services" ? "Included in this service" : "Course summary"}
+                {category === "services"
+                  ? "Included in this service"
+                  : "Course summary"}
               </p>
               {courseItem ? (
                 <div className="mt-4 border-b border-[#e5e7eb] pb-5">
-                  <p className="text-3xl font-semibold text-[#2a308e]">{courseItem.price}</p>
-                  <p className="mt-2 text-sm text-[#6b7280]">{courseItem.duration}</p>
-                  <p className="mt-4 text-sm leading-7 text-[#6b7280]">{courseItem.audience}</p>
+                  <p className="text-3xl font-semibold text-[#2a308e]">
+                    {courseItem.price}
+                  </p>
+                  <p className="mt-2 text-sm text-[#6b7280]">
+                    {courseItem.duration}
+                  </p>
+                  <p className="mt-4 text-sm leading-7 text-[#6b7280]">
+                    {courseItem.audience}
+                  </p>
                 </div>
               ) : null}
               <div className="mt-5 space-y-3">
-                {item.features.map((feature) => (
-                  <div key={feature} className="rounded-xl border border-[#e5e7eb] px-4 py-4 text-sm leading-7 text-black">
+                {item.features.map((feature: string) => (
+                  <div
+                    key={feature}
+                    className="rounded-xl border border-[#e5e7eb] px-4 py-4 text-sm leading-7 text-black"
+                  >
                     {feature}
                   </div>
                 ))}
@@ -146,7 +188,11 @@ export default function SubPage({ category }: { category: "services" | "training
           <div>
             <SectionHeader
               eyebrow="Process"
-              title={category === "services" ? "How the service typically moves forward." : "How the learning path is structured."}
+              title={
+                category === "services"
+                  ? "How the service typically moves forward."
+                  : "How the learning path is structured."
+              }
               body="The process section adds practical context so the page reads like a real offer rather than a generic marketing block."
             />
           </div>
@@ -158,12 +204,16 @@ export default function SubPage({ category }: { category: "services" | "training
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             eyebrow="Related pages"
-            title={category === "services" ? "Explore other services." : "Explore other courses."}
+            title={
+              category === "services"
+                ? "Explore other services."
+                : "Explore other courses."
+            }
             body="These related links make the detail pages behave more like a connected content and conversion system."
             align="split"
           />
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {relatedItems.map((related) => (
+            {relatedItems.map((related: ShowcaseItem) => (
               <ServiceCard
                 key={related.slug}
                 title={related.title}
@@ -184,7 +234,13 @@ export default function SubPage({ category }: { category: "services" | "training
             : `Ready to begin ${item.title.toLowerCase()}?`
         }
         body="The next step can cover timing, requirements, scope, or any questions you need answered before moving forward."
-        primary={{ label: category === "services" ? "Contact DGCC TECH" : "Contact the training desk", href: "/contact" }}
+        primary={{
+          label:
+            category === "services"
+              ? "Contact DGCC TECH"
+              : "Contact the training desk",
+          href: "/contact",
+        }}
       />
     </>
   );

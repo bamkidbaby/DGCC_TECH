@@ -1,6 +1,12 @@
 import { useEffect } from "react";
 import CorporatePageHero from "../components/CorporatePageHero";
-import { CTASection, CourseGrid, SectionHeader, ShellSection, SurfaceCard } from "../components/CorporateUI";
+import {
+  CTASection,
+  CourseGrid,
+  SectionHeader,
+  ShellSection,
+  SurfaceCard,
+} from "../components/CorporateUI";
 import { trainingItems } from "../data/siteContent";
 
 export default function Training() {
@@ -31,7 +37,9 @@ export default function Training() {
           </div>
           <SurfaceCard className="p-7 sm:p-8">
             <p className="text-sm leading-7 text-[#6b7280]">
-              DGCC TECH training is designed for beginners, practical learners, and people who want useful technology skills they can apply quickly in school, work, or business.
+              DGCC TECH training is designed for beginners, practical learners,
+              and people who want useful technology skills they can apply
+              quickly in school, work, or business.
             </p>
             <div className="mt-6 grid gap-4">
               {[
@@ -39,8 +47,11 @@ export default function Training() {
                 "Direct WhatsApp enrollment from each course card",
                 "Dedicated course pages with practical detail",
                 "Business-friendly learning paths for real-world use",
-              ].map((item) => (
-                <div key={item} className="rounded-xl border border-[#e5e7eb] px-4 py-4 text-sm text-black">
+              ].map((item: string) => (
+                <div
+                  key={item}
+                  className="rounded-xl border border-[#e5e7eb] px-4 py-4 text-sm text-black"
+                >
                   {item}
                 </div>
               ))}

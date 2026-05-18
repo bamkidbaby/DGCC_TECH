@@ -1,8 +1,15 @@
 import { useEffect } from "react";
 import { motion } from "framer-motion";
 import CorporatePageHero from "../components/CorporatePageHero";
-import { CTASection, ProcessTimeline, SectionHeader, ServiceCard, ShellSection, stagger } from "../components/CorporateUI";
-import { serviceItems } from "../data/siteContent";
+import {
+  CTASection,
+  ProcessTimeline,
+  SectionHeader,
+  ServiceCard,
+  ShellSection,
+  stagger,
+} from "../components/CorporateUI";
+import { serviceItems, type ServiceItem } from "../data/siteContent";
 
 export default function Services() {
   useEffect(() => {
@@ -36,7 +43,7 @@ export default function Services() {
             viewport={{ once: true, amount: 0.1 }}
             className="mt-12 grid gap-6 lg:grid-cols-3"
           >
-            {serviceItems.map((item) => (
+            {serviceItems.map((item: ServiceItem) => (
               <ServiceCard
                 key={item.slug}
                 title={item.title}
@@ -61,9 +68,21 @@ export default function Services() {
           </div>
           <ProcessTimeline
             items={[
-              { title: "Clarify the request", detail: "We define the business need, urgency, and likely service fit." },
-              { title: "Scope the right route", detail: "A focused service plan is shaped around the actual requirement." },
-              { title: "Execute and support", detail: "The work is delivered with clear communication and practical next steps." },
+              {
+                title: "Clarify the request",
+                detail:
+                  "We define the business need, urgency, and likely service fit.",
+              },
+              {
+                title: "Scope the right route",
+                detail:
+                  "A focused service plan is shaped around the actual requirement.",
+              },
+              {
+                title: "Execute and support",
+                detail:
+                  "The work is delivered with clear communication and practical next steps.",
+              },
             ]}
           />
         </div>
