@@ -39,21 +39,71 @@ export type CourseItem = BaseShowcaseItem & {
 
 export type ShowcaseItem = ServiceItem | CourseItem;
 
-export const whatsappNumber = "2348000000000";
-export const whatsappSecondaryNumber = "2348000000001";
+export type TeamMember = {
+  name: string;
+  role: string;
+  bio: string;
+  image: string;
+};
+
+export const whatsappNumber = "2347082523166";
+export const whatsappSecondaryNumber = "2347045371328";
 export const officeMapLink = "https://maps.app.goo.gl/QuVX9osRQNQREQkn7";
-export const officeAddress = "Lagos, Nigeria";
+export const officeAddress =
+  "3 Akinguroye Street, Toluwalase Estate, ASB Oke, Aro 111105, Ogun State.";
 
 export function getCourseWhatsAppLink(courseName: string) {
   const message = `Hello, I want to enroll for ${courseName}.\n\nI would like more information about the requirements and how to start.`;
   return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
 }
 
+export const trainingPolicies = [
+  "Registration Form: ₦2,000",
+  "Handout & Resources for 2/3 Month Courses: ₦4,000",
+  "Handout & Resources for 4/6 Month Courses: ₦6,000",
+  "70% of the tuition fee must be paid before commencement of training.",
+  "Students who complete their desired course will undergo Industrial Training (IT) at a given place.",
+];
+
+export const teamMembers: TeamMember[] = [
+  {
+    name: "Technology Operations Lead",
+    role: "Service Delivery",
+    bio: "Oversees technical support, device servicing, and client-facing digital delivery so projects move with more structure and fewer avoidable delays.",
+    image:
+      "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    name: "Training Coordinator",
+    role: "Learning Programs",
+    bio: "Supports course planning, learner guidance, and training operations across certificate, diploma, and practical skill-building programs.",
+    image:
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    name: "Design and Media Specialist",
+    role: "Creative Services",
+    bio: "Handles visual communication, publishing support, and branded design work that helps DGCC TECH clients present themselves more clearly.",
+    image:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=1200&q=80",
+  },
+  {
+    name: "Client Support Officer",
+    role: "Customer Experience",
+    bio: "Guides enquiries, registrations, and service follow-through so clients and students always have a clearer next step.",
+    image:
+      "https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=1200&q=80",
+  },
+];
+
 export const brandStats: StatItem[] = [
   { value: "150+", label: "Client projects and support requests delivered" },
   { value: "500+", label: "Learners and candidates guided through training" },
   { value: "8", label: "Core technology and business support service lines" },
-  { value: "Mon - Sat", label: "Operational support window for active clients" },
+  {
+    value: "Mon - Sat",
+    label: "Operational support window for active clients",
+  },
 ];
 
 export const serviceItems: ServiceItem[] = [
@@ -64,8 +114,7 @@ export const serviceItems: ServiceItem[] = [
     eyebrow: "Digital Presence",
     summary:
       "Corporate websites, landing pages, and business platforms designed to make DGCC TECH clients look credible, clear, and modern online.",
-    hero:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+    hero: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
     stats: [
@@ -79,9 +128,21 @@ export const serviceItems: ServiceItem[] = [
       "Launch support, revisions, and practical guidance for content updates",
     ],
     process: [
-      { title: "Project discovery", detail: "We define business goals, content needs, audience expectations, and required pages." },
-      { title: "Design and build", detail: "Layouts, content structure, and development move together so the site stays clean and practical." },
-      { title: "Review and launch", detail: "Testing, refinement, and handover are completed before the site goes live." },
+      {
+        title: "Project discovery",
+        detail:
+          "We define business goals, content needs, audience expectations, and required pages.",
+      },
+      {
+        title: "Design and build",
+        detail:
+          "Layouts, content structure, and development move together so the site stays clean and practical.",
+      },
+      {
+        title: "Review and launch",
+        detail:
+          "Testing, refinement, and handover are completed before the site goes live.",
+      },
     ],
     articleSections: [
       {
@@ -107,8 +168,7 @@ export const serviceItems: ServiceItem[] = [
     eyebrow: "Visual Communication",
     summary:
       "Graphic design support for businesses, schools, campaigns, and product marketing with work that feels clean, intentional, and print-ready.",
-    hero:
-      "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80",
+    hero: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80",
     stats: [
@@ -122,9 +182,21 @@ export const serviceItems: ServiceItem[] = [
       "Files prepared for both digital distribution and print production",
     ],
     process: [
-      { title: "Brief and objective", detail: "We identify the audience, offer, and message the design must carry." },
-      { title: "Visual direction", detail: "Concepts are shaped into structured layouts that fit the business need." },
-      { title: "Delivery", detail: "Final files are exported in the formats needed for print, web, or campaign use." },
+      {
+        title: "Brief and objective",
+        detail:
+          "We identify the audience, offer, and message the design must carry.",
+      },
+      {
+        title: "Visual direction",
+        detail:
+          "Concepts are shaped into structured layouts that fit the business need.",
+      },
+      {
+        title: "Delivery",
+        detail:
+          "Final files are exported in the formats needed for print, web, or campaign use.",
+      },
     ],
     articleSections: [
       {
@@ -150,8 +222,7 @@ export const serviceItems: ServiceItem[] = [
     eyebrow: "Technical Support",
     summary:
       "Practical computer support for diagnostics, upgrades, maintenance, and performance recovery across personal and office systems.",
-    hero:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
+    hero: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1200&q=80",
     stats: [
@@ -165,9 +236,21 @@ export const serviceItems: ServiceItem[] = [
       "Support for students, staff teams, and growing businesses",
     ],
     process: [
-      { title: "Issue review", detail: "We inspect the device or explain the likely fault path based on the symptoms." },
-      { title: "Service action", detail: "Repair, cleanup, software work, or hardware recommendations are carried out carefully." },
-      { title: "Testing and return", detail: "The system is checked before handover and next-step guidance is shared." },
+      {
+        title: "Issue review",
+        detail:
+          "We inspect the device or explain the likely fault path based on the symptoms.",
+      },
+      {
+        title: "Service action",
+        detail:
+          "Repair, cleanup, software work, or hardware recommendations are carried out carefully.",
+      },
+      {
+        title: "Testing and return",
+        detail:
+          "The system is checked before handover and next-step guidance is shared.",
+      },
     ],
     articleSections: [
       {
@@ -193,8 +276,7 @@ export const serviceItems: ServiceItem[] = [
     eyebrow: "Business Production",
     summary:
       "Reliable print, photocopy, binding, and finishing support for schools, offices, events, and branded business communication.",
-    hero:
-      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1600&q=80",
+    hero: "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
     stats: [
@@ -208,9 +290,21 @@ export const serviceItems: ServiceItem[] = [
       "Pre-production checks to reduce avoidable print mistakes",
     ],
     process: [
-      { title: "File check", detail: "We review content, size, layout, and output expectations before production begins." },
-      { title: "Production", detail: "Printing and finishing are handled with attention to clarity and presentation quality." },
-      { title: "Delivery or pickup", detail: "Completed materials are prepared for handover on the agreed timeline." },
+      {
+        title: "File check",
+        detail:
+          "We review content, size, layout, and output expectations before production begins.",
+      },
+      {
+        title: "Production",
+        detail:
+          "Printing and finishing are handled with attention to clarity and presentation quality.",
+      },
+      {
+        title: "Delivery or pickup",
+        detail:
+          "Completed materials are prepared for handover on the agreed timeline.",
+      },
     ],
     articleSections: [
       {
@@ -236,8 +330,7 @@ export const serviceItems: ServiceItem[] = [
     eyebrow: "Digital Protection",
     summary:
       "Practical cybersecurity guidance, awareness support, and safer digital workflow recommendations for teams and individuals.",
-    hero:
-      "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
+    hero: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80",
     stats: [
@@ -251,9 +344,21 @@ export const serviceItems: ServiceItem[] = [
       "Support tailored to practical operating realities for local businesses and learners",
     ],
     process: [
-      { title: "Current-state review", detail: "We assess tools, habits, and obvious risk points affecting daily operations." },
-      { title: "Priority improvements", detail: "The most important fixes and safer practices are identified first." },
-      { title: "Ongoing guidance", detail: "Clients receive practical next steps they can actually maintain." },
+      {
+        title: "Current-state review",
+        detail:
+          "We assess tools, habits, and obvious risk points affecting daily operations.",
+      },
+      {
+        title: "Priority improvements",
+        detail:
+          "The most important fixes and safer practices are identified first.",
+      },
+      {
+        title: "Ongoing guidance",
+        detail:
+          "Clients receive practical next steps they can actually maintain.",
+      },
     ],
     articleSections: [
       {
@@ -279,8 +384,7 @@ export const serviceItems: ServiceItem[] = [
     eyebrow: "Application Services",
     summary:
       "Guided support for admissions, recruitment, exams, and form-based digital applications where accuracy and follow-through matter.",
-    hero:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+    hero: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
     stats: [
@@ -294,9 +398,21 @@ export const serviceItems: ServiceItem[] = [
       "Guidance that reduces avoidable form errors and missed details",
     ],
     process: [
-      { title: "Requirements check", detail: "Needed documents and application steps are confirmed before work begins." },
-      { title: "Submission support", detail: "Forms are completed carefully and cross-checked for obvious issues." },
-      { title: "Follow-up", detail: "Important receipts, deadlines, and next actions are communicated clearly." },
+      {
+        title: "Requirements check",
+        detail:
+          "Needed documents and application steps are confirmed before work begins.",
+      },
+      {
+        title: "Submission support",
+        detail:
+          "Forms are completed carefully and cross-checked for obvious issues.",
+      },
+      {
+        title: "Follow-up",
+        detail:
+          "Important receipts, deadlines, and next actions are communicated clearly.",
+      },
     ],
     articleSections: [
       {
@@ -317,191 +433,322 @@ export const serviceItems: ServiceItem[] = [
   },
 ];
 
-export const trainingItems: CourseItem[] = [
-  {
+function buildCourse({
+  slug,
+  title,
+  summary,
+  duration,
+  price,
+  audience,
+  hero,
+  image,
+  content,
+  outcome,
+}: {
+  slug: string;
+  title: string;
+  summary: string;
+  duration: string;
+  price: string;
+  audience: string;
+  hero: string;
+  image: string;
+  content: string[];
+  outcome: string;
+}): CourseItem {
+  return {
     kind: "course",
-    slug: "computer-basics",
-    title: "Computer Basics",
-    eyebrow: "Foundation Course",
+    slug,
+    title,
+    eyebrow: "Professional Training",
+    summary,
+    hero,
+    image,
+    price,
+    duration,
+    audience,
+    stats: [
+      { label: "Duration", value: duration },
+      { label: "Tuition", value: price },
+      { label: "Outcome", value: outcome },
+    ],
+    features: content,
+    process: [
+      {
+        title: "Registration and screening",
+        detail:
+          "Learners complete registration, confirm their course choice, and receive guidance on the tools or background expected before classes begin.",
+      },
+      {
+        title: "Hands-on class delivery",
+        detail:
+          "Training is delivered through practical sessions that focus on repetition, applied exercises, and real task familiarity instead of theory alone.",
+      },
+      {
+        title: "Completion and progression",
+        detail:
+          "After the course, learners receive completion guidance and are prepared for the Industrial Training stage connected to their chosen program.",
+      },
+    ],
+    articleSections: [
+      {
+        title: "Course overview",
+        paragraphs: [
+          summary,
+          `This ${duration.toLowerCase()} program is structured to give learners practical confidence in ${title.toLowerCase()} with a clear tuition of ${price}.`,
+        ],
+      },
+      {
+        title: "Course content",
+        paragraphs: [
+          `The program covers ${content.join(", ")}.`,
+          "Training is delivered with a practical, workplace-oriented approach so students can apply what they learn in real tasks, client work, or further technical development.",
+        ],
+      },
+    ],
+  };
+}
+
+export const trainingItems: CourseItem[] = [
+  buildCourse({
+    slug: "certificate-word-processing",
+    title: "Certificate in Word Processing",
     summary:
-      "A beginner-friendly course covering essential computer use, typing flow, internet basics, files, and everyday digital confidence.",
-    hero:
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+      "A foundational office productivity course for learners who want confidence with typing, computer use, Microsoft Office basics, and internet work.",
+    duration: "2 Months",
+    price: "₦35,000",
+    audience:
+      "Beginners, students, office support staff, and first-time computer users",
+    hero: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to Computer (General Computing)",
+      "Computer Operation",
+      "Typing Skills (Mavis Beacon)",
+      "Microsoft Word",
+      "Microsoft Excel",
+      "Internet Training",
+    ],
+    outcome: "Office Readiness",
+  }),
+  buildCourse({
+    slug: "computer-based-test",
+    title: "Computer Based Test",
+    summary:
+      "A practical preparation program for candidates who need confidence with CBT environments, speed, accuracy, and test-day computer use.",
+    duration: "Flexible Schedule",
+    price: "Contact for Pricing",
+    audience:
+      "Exam candidates, admission applicants, and learners preparing for computer-based assessments",
+    hero: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to CBT Environment",
+      "Basic Computer Navigation",
+      "Typing and Speed Practice",
+      "Mock Test Sessions",
+      "Internet-Based Test Familiarity",
+      "Confidence Building for Exam Day",
+    ],
+    outcome: "CBT Readiness",
+  }),
+  buildCourse({
+    slug: "certificate-desktop-publishing",
+    title: "Certificate in Desktop Publishing",
+    summary:
+      "A practical desktop publishing track for learners who want strong office skills, presentation basics, and device-connected production knowledge.",
+    duration: "3 Months",
+    price: "₦35,000",
+    audience:
+      "Beginners, office assistants, school administrators, and publishing support learners",
+    hero: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to Computer (General Computing)",
+      "Computer Operation",
+      "Typing Skills (Mavis Beacon)",
+      "Microsoft Word",
+      "Microsoft Excel",
+      "Microsoft PowerPoint",
+      "Internet Training",
+      "Hardware Connection & Its Uses",
+      "Scanning, Printing & a lot more",
+    ],
+    outcome: "Publishing Support Skills",
+  }),
+  buildCourse({
+    slug: "certificate-graphics-designing",
+    title: "Certificate in Graphics Designing",
+    summary:
+      "A graphics fundamentals course covering design tools, presentation work, and production support for print-oriented visual tasks.",
+    duration: "3 Months",
+    price: "₦35,000",
+    audience:
+      "Beginners, aspiring designers, and learners preparing for print and graphics support work",
+    hero: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1200&q=80",
-    price: "₦15,000",
-    duration: "4 Weeks",
-    audience: "Beginners, students, and first-time computer users",
-    stats: [
-      { label: "Duration", value: "4 Weeks" },
-      { label: "Price", value: "₦15,000" },
-      { label: "Mode", value: "Hands-On" },
+    content: [
+      "Introduction to Computer (General Computing)",
+      "Computer Operation",
+      "Microsoft PowerPoint",
+      "Corel Draw",
+      "Internet Training",
+      "Hardware Connection & Its Uses",
+      "Scanning, Printing & a lot more",
     ],
-    features: [
-      "Computer startup, file handling, typing practice, and internet navigation",
-      "Email basics, document editing, and safe everyday digital habits",
-      "Guided sessions designed for learners who want practical confidence",
-    ],
-    process: [
-      { title: "Orientation", detail: "The learner's current experience level and goals are assessed before classes begin." },
-      { title: "Practical classes", detail: "Sessions focus on repeated hands-on use instead of theory-heavy instruction." },
-      { title: "Confidence check", detail: "Learners finish with enough comfort to work independently on a computer." },
-    ],
-    articleSections: [
-      {
-        title: "Why this course matters",
-        paragraphs: [
-          "Computer confidence is now a basic requirement for school, work, and many application processes. This course helps learners build that foundation without feeling overwhelmed.",
-          "DGCC TECH teaches the basics in a practical way so students can immediately use what they learn in everyday life.",
-        ],
-      },
-      {
-        title: "What learners take away",
-        paragraphs: [
-          "By the end of the course, learners should feel more comfortable navigating a system, creating simple documents, using the internet productively, and handling everyday digital tasks.",
-          "That confidence becomes the base for more advanced training later.",
-        ],
-      },
-    ],
-  },
-  {
-    kind: "course",
-    slug: "graphic-design",
-    title: "Graphic Design",
-    eyebrow: "Creative Course",
+    outcome: "Graphics Foundation",
+  }),
+  buildCourse({
+    slug: "certificate-accounting-applications",
+    title: "Certificate in Accounting Applications",
     summary:
-      "A practical design course focused on layout, typography, social graphics, flyers, and client-ready creative output.",
-    hero:
-      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1600&q=80",
+      "A business application course that combines core computer skills with spreadsheet, database, and office tools useful for accounting workflows.",
+    duration: "4 Months",
+    price: "₦45,000",
+    audience:
+      "Students, office administrators, clerks, and entry-level accounting support learners",
+    hero: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1554224154-26032ffc0d07?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to Computer (General Computing)",
+      "Computer Operation",
+      "Typing Skills (Mavis Beacon)",
+      "Microsoft Word",
+      "Microsoft Excel & Advance Excel",
+      "Microsoft Access",
+      "Internet Training",
+      "Scanning",
+      "Printing",
+    ],
+    outcome: "Accounting Workflow Readiness",
+  }),
+  buildCourse({
+    slug: "diploma-website-designing",
+    title: "Diploma in Website Designing",
+    summary:
+      "A diploma program focused on planning, designing, and launching practical business websites using web tools, graphics, and WordPress workflows.",
+    duration: "3 Months",
+    price: "₦55,000",
+    audience:
+      "Aspiring web designers, freelancers, and business-minded learners entering digital services",
+    hero: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to Internet & Website",
+      "Cpanel",
+      "Webgraphics",
+      "Introduction to Wordpress",
+      "Designing of Unique Blogs & Websites",
+      "Project & Launching",
+    ],
+    outcome: "Website Design Delivery",
+  }),
+  buildCourse({
+    slug: "diploma-desktop-publishing",
+    title: "Diploma in Desktop Publishing",
+    summary:
+      "An extended publishing diploma that combines office productivity, presentation, graphics, internet use, and print-support operations.",
+    duration: "6 Months",
+    price: "₦65,000",
+    audience:
+      "Learners seeking broader office, publishing, and print production competence",
+    hero: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80",
+    image:
+      "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to Computer (General Computing)",
+      "Computer Operation",
+      "Typing Skills (Mavis Beacon)",
+      "Microsoft Word",
+      "Microsoft Excel & Advance Excel",
+      "Microsoft PowerPoint",
+      "Corel Draw",
+      "Internet Training",
+      "Hardware Connection & Its Uses",
+      "Scanning, Printing & a lot more",
+    ],
+    outcome: "Advanced Publishing Readiness",
+  }),
+  buildCourse({
+    slug: "diploma-graphics-designing",
+    title: "Diploma in Graphics Designing",
+    summary:
+      "A longer graphics diploma for learners who want stronger visual production skills across Corel Draw, Photoshop, presentation work, and design support tasks.",
+    duration: "6 Months",
+    price: "₦65,000",
+    audience:
+      "Aspiring professional designers, print operators, and creative service providers",
+    hero: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1600&q=80",
     image:
       "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1200&q=80",
-    price: "₦25,000",
-    duration: "6 Weeks",
-    audience: "Beginners and aspiring freelance or in-house designers",
-    stats: [
-      { label: "Duration", value: "6 Weeks" },
-      { label: "Price", value: "₦25,000" },
-      { label: "Outcome", value: "Portfolio Pieces" },
+    content: [
+      "Introduction to Computer (General Computing)",
+      "Computer Operation",
+      "Typing Skills (Mavis Beacon)",
+      "Microsoft Word",
+      "Microsoft PowerPoint & 3D Animation",
+      "Corel Draw",
+      "Adobe Photoshop",
+      "Internet Training",
+      "Hardware Connection & Its Uses",
+      "Scanning, Printing & a lot more",
     ],
-    features: [
-      "Design principles, typography, hierarchy, and composition",
-      "Flyers, social media graphics, and branded visual materials",
-      "Real exercises that help learners think like working designers",
-    ],
-    process: [
-      { title: "Foundations", detail: "Students learn visual hierarchy, spacing, and layout decision-making." },
-      { title: "Project work", detail: "Design tasks move from guided practice into more independent output." },
-      { title: "Portfolio preparation", detail: "Final projects are refined into work learners can present confidently." },
-    ],
-    articleSections: [
-      {
-        title: "A course built around practical output",
-        paragraphs: [
-          "Graphic design students often need more than software familiarity. They need guidance on what makes a layout feel professional, readable, and useful.",
-          "This course therefore teaches both execution and judgment, which helps learners produce stronger work for clients and employers.",
-        ],
-      },
-      {
-        title: "Where this training can lead",
-        paragraphs: [
-          "The course is helpful for people preparing for freelance work, social media content creation, small business branding, or future specialization in visual communication.",
-          "It gives learners a more solid starting point than template-only practice.",
-        ],
-      },
-    ],
-  },
-  {
-    kind: "course",
-    slug: "web-development",
-    title: "Web Development",
-    eyebrow: "Technical Course",
+    outcome: "Design Production Skills",
+  }),
+  buildCourse({
+    slug: "computer-engineering-laptop",
+    title: "Computer Engineering (Laptop)",
     summary:
-      "A modern web development course covering page structure, responsive styling, front-end workflow, and how real websites come together.",
-    hero:
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
+      "A hands-on technical diploma for learners who want practical experience with laptop systems, operating systems, hardware, software setup, and repair troubleshooting.",
+    duration: "6 Months",
+    price: "₦65,000",
+    audience:
+      "Technicians in training, support staff, and learners interested in repair and maintenance work",
+    hero: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
     image:
-      "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1200&q=80",
-    price: "₦50,000",
-    duration: "8 Weeks",
-    audience: "Beginners ready to move into coding and front-end delivery",
-    stats: [
-      { label: "Duration", value: "8 Weeks" },
-      { label: "Price", value: "₦50,000" },
-      { label: "Projects", value: "Real Build Tasks" },
+      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to Computer (General Computing)",
+      "Computer Operation",
+      "Introduction to Operating System",
+      "Identification of Components",
+      "Installation & Configuration of Hardware",
+      "Installation & Configuration of Software",
+      "Hardware Repair",
+      "Software Repair",
+      "Problems & Solution",
+      "Power Supply, Motherboard, Disk Drive, etc",
     ],
-    features: [
-      "HTML, CSS, responsive layouts, and modern front-end workflow",
-      "Component thinking, interface structure, and practical build habits",
-      "Project-based learning that leads toward deployable work",
-    ],
-    process: [
-      { title: "Foundations", detail: "Students begin with structure, semantics, and responsive design basics." },
-      { title: "Development workflow", detail: "The course introduces practical coding habits and interface assembly." },
-      { title: "Project delivery", detail: "Learners complete guided build work that reflects real web tasks." },
-    ],
-    articleSections: [
-      {
-        title: "Training for real build confidence",
-        paragraphs: [
-          "Web development can feel intimidating when learners meet too much abstraction too early. DGCC TECH keeps the route practical and grounded in actual page-building work.",
-          "The aim is to help students understand how websites are structured, styled, and shipped in a professional environment.",
-        ],
-      },
-      {
-        title: "Who should take it",
-        paragraphs: [
-          "This course suits students, career switchers, and curious beginners who want a serious entry point into front-end development.",
-          "It also works for people who want to understand how websites are built before moving into deeper specialization.",
-        ],
-      },
-    ],
-  },
-  {
-    kind: "course",
-    slug: "video-editing",
-    title: "Video Editing",
-    eyebrow: "Media Course",
+    outcome: "Laptop Repair Readiness",
+  }),
+  buildCourse({
+    slug: "diploma-website-development",
+    title: "Diploma in Website Development",
     summary:
-      "A practical video editing course for content creators, business owners, and media learners who want cleaner visual storytelling.",
-    hero:
-      "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?auto=format&fit=crop&w=1600&q=80",
+      "A development-focused diploma covering front-end and modern web application foundations, including JavaScript, Node, React, databases, and Web3 concepts.",
+    duration: "4 Months",
+    price: "₦70,000",
+    audience:
+      "Aspiring developers, technical beginners, and learners moving into software delivery",
+    hero: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80",
     image:
-      "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200&q=80",
-    price: "₦30,000",
-    duration: "5 Weeks",
-    audience: "Content creators, media beginners, and brand teams",
-    stats: [
-      { label: "Duration", value: "5 Weeks" },
-      { label: "Price", value: "₦30,000" },
-      { label: "Focus", value: "Practical Editing" },
+      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=80",
+    content: [
+      "Introduction to Internet & Web Development",
+      "HTML, CSS",
+      "Javascript, Node",
+      "React, PostgreSQL",
+      "Web3 and Dapps",
+      "Projects & Launching",
     ],
-    features: [
-      "Editing workflow, cutting, transitions, audio cleanup, and export basics",
-      "Content structure for promos, social media, and simple business storytelling",
-      "Guidance on how to make videos clearer, tighter, and more professional",
-    ],
-    process: [
-      { title: "Editing basics", detail: "Students learn the workflow, tool layout, and core editing decisions." },
-      { title: "Applied projects", detail: "Practice clips are turned into usable short-form and business content." },
-      { title: "Finishing", detail: "Learners export and polish content for common publishing channels." },
-    ],
-    articleSections: [
-      {
-        title: "Designed for practical media use",
-        paragraphs: [
-          "Good editing is often about clarity, pacing, and message control. This course helps learners build those instincts instead of only learning buttons and menus.",
-          "The training is especially useful for people who need to produce cleaner content for business, school, or brand communication.",
-        ],
-      },
-      {
-        title: "What makes the course useful",
-        paragraphs: [
-          "Students leave with a better understanding of how to shape raw clips into something watchable, professional, and easier for an audience to follow.",
-          "That makes the course relevant for creators, internal teams, and media beginners alike.",
-        ],
-      },
-    ],
-  },
+    outcome: "Web Development Foundations",
+  }),
 ];
 
 export const galleryImages = [

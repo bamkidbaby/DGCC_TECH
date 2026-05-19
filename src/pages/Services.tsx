@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import CorporatePageHero from "../components/CorporatePageHero";
 import {
   CTASection,
@@ -7,7 +6,6 @@ import {
   SectionHeader,
   ServiceCard,
   ShellSection,
-  stagger,
 } from "../components/CorporateUI";
 import { serviceItems, type ServiceItem } from "../data/siteContent";
 
@@ -36,13 +34,7 @@ export default function Services() {
             body="That gives visitors a better view of what DGCC TECH does, who each offer is for, and how the work typically moves from request to delivery."
             align="split"
           />
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="mt-12 grid gap-6 lg:grid-cols-3"
-          >
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {serviceItems.map((item: ServiceItem) => (
               <ServiceCard
                 key={item.slug}
@@ -53,7 +45,7 @@ export default function Services() {
                 eyebrow={item.eyebrow}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
       </ShellSection>
 

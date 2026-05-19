@@ -1,7 +1,6 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import CorporatePageHero from "../components/CorporatePageHero";
-import { CTASection, GalleryGrid, SectionHeader, ShellSection, stagger } from "../components/CorporateUI";
+import { CTASection, GalleryGrid, SectionHeader, ShellSection } from "../components/CorporateUI";
 import { galleryImages } from "../data/siteContent";
 
 export default function Gallery() {
@@ -28,9 +27,9 @@ export default function Gallery() {
             body="Rather than filling the page with decorative effects, the gallery shows the kind of work, learning, and service atmosphere the business operates in."
             align="split"
           />
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.05 }} className="mt-12">
+          <div className="mt-12">
             <GalleryGrid items={galleryImages} />
-          </motion.div>
+          </div>
         </div>
       </ShellSection>
 

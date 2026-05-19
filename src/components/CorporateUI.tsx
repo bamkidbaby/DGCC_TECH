@@ -6,26 +6,11 @@ import {
   getCourseWhatsAppLink,
   type CourseItem,
   type StatItem,
+  type TeamMember,
 } from "../data/siteContent";
 
-export const revealUp = {
-  hidden: { opacity: 0, y: 10 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: "easeOut" as const },
-  },
-};
-
-export const stagger = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.04,
-    },
-  },
-};
+export const revealUp = {};
+export const stagger = {};
 
 export function ShellSection({
   children,
@@ -77,15 +62,28 @@ export function SectionHeader({
       }
     >
       <div>
-        <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]">
+        <p
+          data-aos="fade-down"
+          className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]"
+        >
           {eyebrow}
         </p>
-        <h2 className="mt-3 text-3xl font-semibold tracking-tight text-black sm:text-4xl">
+        <h2
+          data-aos="fade-down"
+          data-aos-delay="90"
+          className="mt-3 text-3xl font-semibold tracking-tight text-black sm:text-4xl"
+        >
           {title}
         </h2>
       </div>
       {body ? (
-        <p className="max-w-2xl text-base leading-7 text-[#6b7280]">{body}</p>
+        <p
+          data-aos={align === "split" ? "fade-left" : "fade-down"}
+          data-aos-delay="170"
+          className="max-w-2xl text-base leading-7 text-[#6b7280]"
+        >
+          {body}
+        </p>
       ) : null}
     </div>
   );
@@ -94,9 +92,11 @@ export function SectionHeader({
 export function StatsStrip({ items }: { items: StatItem[] }) {
   return (
     <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-      {items.map((item) => (
+      {items.map((item, index) => (
         <div
           key={item.label}
+          data-aos="zoom-in-up"
+          data-aos-delay={index * 70}
           className="rounded-2xl border border-[#e5e7eb] bg-white p-6"
         >
           <p className="text-3xl font-semibold tracking-tight text-black">
@@ -123,7 +123,7 @@ export function ServiceCard({
   eyebrow: string;
 }) {
   return (
-    <motion.div variants={revealUp}>
+    <div data-aos="fade-up" data-aos-duration="700">
       <Link
         to={href}
         className="group block overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white transition duration-200 hover:border-[#9ca3af]"
@@ -144,7 +144,7 @@ export function ServiceCard({
           </div>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
 
@@ -183,8 +183,8 @@ export function CourseCard({
   href: string;
 }) {
   return (
-    <motion.div
-      variants={revealUp}
+    <div
+      data-aos="zoom-in-up"
       className="rounded-2xl border border-[#e5e7eb] bg-white p-6 transition duration-200 hover:border-[#9ca3af]"
     >
       <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]">
@@ -207,19 +207,13 @@ export function CourseCard({
           View course details
         </Link>
       </div>
-    </motion.div>
+    </div>
   );
 }
 
 export function CourseGrid({ items }: { items: CourseItem[] }) {
   return (
-    <motion.div
-      variants={stagger}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.12 }}
-      className="grid gap-6 lg:grid-cols-2"
-    >
+    <div className="grid gap-6 lg:grid-cols-2">
       {items.map((item) => (
         <CourseCard
           key={item.slug}
@@ -230,7 +224,7 @@ export function CourseGrid({ items }: { items: CourseItem[] }) {
           href={`/training/${item.slug}`}
         />
       ))}
-    </motion.div>
+    </div>
   );
 }
 
@@ -252,7 +246,11 @@ export function GalleryGrid({
                 : "";
 
         return (
-          <motion.div key={item.title} variants={revealUp} className={span}>
+          <div
+            key={item.title}
+            data-aos={item.size === "large" ? "zoom-in" : item.size === "tall" ? "fade-left" : "fade-up"}
+            className={span}
+          >
             <div className="flex h-full min-h-[200px] flex-col overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white">
               <div className="flex-1 min-h-0 overflow-hidden">
                 <img
@@ -265,9 +263,38 @@ export function GalleryGrid({
                 <p className="text-sm font-medium text-black">{item.title}</p>
               </div>
             </div>
-          </motion.div>
+          </div>
         );
       })}
+    </div>
+  );
+}
+
+export function TeamGrid({ items }: { items: TeamMember[] }) {
+  return (
+    <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      {items.map((item, index) => (
+        <div key={item.name} data-aos="fade-up" data-aos-delay={index * 70}>
+          <SurfaceCard className="h-full overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.name}
+              className="h-72 w-full object-cover"
+            />
+            <div className="p-6">
+              <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]">
+                {item.role}
+              </p>
+              <h3 className="mt-3 text-2xl font-semibold tracking-tight text-black">
+                {item.name}
+              </h3>
+              <p className="mt-4 text-sm leading-7 text-[#6b7280]">
+                {item.bio}
+              </p>
+            </div>
+          </SurfaceCard>
+        </div>
+      ))}
     </div>
   );
 }
@@ -285,7 +312,10 @@ export function CTASection({
 }) {
   return (
     <ShellSection className="pt-4">
-      <div className="mx-auto max-w-7xl rounded-2xl border border-[#e5e7eb] bg-white px-6 py-8 sm:px-8 sm:py-10">
+      <div
+        data-aos="zoom-in-up"
+        className="mx-auto max-w-7xl rounded-2xl border border-[#e5e7eb] bg-white px-6 py-8 sm:px-8 sm:py-10"
+      >
         <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]">
@@ -328,9 +358,10 @@ export function ProcessTimeline({
   return (
     <div className="relative space-y-8 before:absolute before:left-[12px] before:top-2 before:h-[calc(100%-16px)] before:w-px before:bg-[#e5e7eb]">
       {items.map((item, index) => (
-        <motion.div
+        <div
           key={item.title}
-          variants={revealUp}
+          data-aos={index % 2 === 0 ? "fade-right" : "fade-left"}
+          data-aos-delay={index * 70}
           className="relative pl-10"
         >
           <div className="absolute left-0 top-1 flex h-6 w-6 items-center justify-center rounded-full bg-[#2a308e] text-xs font-semibold text-white">
@@ -338,7 +369,7 @@ export function ProcessTimeline({
           </div>
           <h3 className="text-xl font-semibold text-black">{item.title}</h3>
           <p className="mt-2 text-sm leading-7 text-[#6b7280]">{item.detail}</p>
-        </motion.div>
+        </div>
       ))}
     </div>
   );
@@ -359,6 +390,8 @@ export function FAQAccordion({
         return (
           <div
             key={item.question}
+            data-aos="fade-up"
+            data-aos-delay={index * 60}
             className="rounded-2xl border border-[#e5e7eb] bg-white p-5 sm:p-6"
           >
             <button

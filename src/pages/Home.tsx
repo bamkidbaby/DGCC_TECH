@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import CorporatePageHero from "../components/CorporatePageHero";
 import {
   CTASection,
@@ -12,8 +11,6 @@ import {
   ShellSection,
   StatsStrip,
   SurfaceCard,
-  revealUp,
-  stagger,
 } from "../components/CorporateUI";
 import { brandStats, faqs, galleryImages, serviceItems, trainingItems } from "../data/siteContent";
 
@@ -71,21 +68,15 @@ export default function Home() {
               body="DGCC TECH combines technical delivery with business-friendly communication so every page, service, and support line feels more useful and more professional."
             />
           </SurfaceCard>
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.1 }}
-            className="grid gap-4 sm:grid-cols-2"
-          >
+          <div className="grid gap-4 sm:grid-cols-2">
             {valuePoints.map((item) => (
-              <motion.div key={item} variants={revealUp}>
+              <div key={item} data-aos="fade-up">
                 <SurfaceCard className="h-full p-6">
                   <p className="text-sm leading-7 text-[#6b7280]">{item}</p>
                 </SurfaceCard>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </ShellSection>
 
@@ -97,13 +88,7 @@ export default function Home() {
             body="Every major service has its own dedicated detail page so visitors can move from overview to deeper understanding without friction."
             align="split"
           />
-          <motion.div
-            variants={stagger}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.12 }}
-            className="mt-12 grid gap-6 lg:grid-cols-3"
-          >
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {serviceItems.slice(0, 3).map((item) => (
               <ServiceCard
                 key={item.slug}
@@ -114,7 +99,7 @@ export default function Home() {
                 eyebrow={item.eyebrow}
               />
             ))}
-          </motion.div>
+          </div>
         </div>
       </ShellSection>
 
@@ -153,9 +138,9 @@ export default function Home() {
             body="The gallery supports the brand with clean, business-oriented imagery rather than decorative filler."
             align="split"
           />
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.1 }} className="mt-12">
+          <div className="mt-12">
             <GalleryGrid items={galleryImages} />
-          </motion.div>
+          </div>
         </div>
       </ShellSection>
 

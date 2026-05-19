@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 type HeroStat = {
@@ -55,20 +54,34 @@ export default function CorporatePageHero({
     <section className="border-b border-[#e5e7eb] bg-white px-4 pb-12 pt-8 sm:px-6 lg:px-8 lg:pb-16">
       <div className="mx-auto max-w-7xl">
         <div className={align === "split" ? "grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center" : "max-w-4xl"}>
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, ease: "easeOut" }}
-            className="max-w-3xl"
-          >
-            <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]">{badge}</p>
-            <h1 className="mt-4 text-[2rem] font-semibold tracking-tight text-black sm:text-5xl lg:text-6xl">
+          <div className="max-w-3xl">
+            <p
+              data-aos="fade-down"
+              className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]"
+            >
+              {badge}
+            </p>
+            <h1
+              data-aos="fade-down"
+              data-aos-delay="90"
+              className="mt-4 text-[2rem] font-semibold tracking-tight text-black sm:text-5xl lg:text-6xl"
+            >
               {title}
             </h1>
-            <p className="mt-5 max-w-2xl text-base leading-8 text-[#6b7280] sm:text-lg">{subtitle}</p>
+            <p
+              data-aos="fade-down"
+              data-aos-delay="160"
+              className="mt-5 max-w-2xl text-base leading-8 text-[#6b7280] sm:text-lg"
+            >
+              {subtitle}
+            </p>
 
             {(cta || secondaryCta) ? (
-              <div className="mt-8 flex flex-wrap gap-3">
+              <div
+                data-aos="fade-down"
+                data-aos-delay="230"
+                className="mt-8 flex flex-wrap gap-3"
+              >
                 {cta ? <ActionLink href={cta.href} label={cta.label} primary /> : null}
                 {secondaryCta ? <ActionLink href={secondaryCta.href} label={secondaryCta.label} /> : null}
               </div>
@@ -76,25 +89,29 @@ export default function CorporatePageHero({
 
             {stats.length > 0 ? (
               <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-2xl border border-[#e5e7eb] bg-white p-5">
+                {stats.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    data-aos="zoom-in"
+                    data-aos-delay={280 + index * 80}
+                    className="rounded-2xl border border-[#e5e7eb] bg-white p-5"
+                  >
                     <p className="text-2xl font-semibold text-black">{stat.value}</p>
                     <p className="mt-2 text-sm leading-6 text-[#6b7280]">{stat.label}</p>
                   </div>
                 ))}
               </div>
             ) : null}
-          </motion.div>
+          </div>
 
           {align === "split" && image ? (
-            <motion.div
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.55, ease: "easeOut", delay: 0.08 }}
+            <div
+              data-aos="fade-left"
+              data-aos-delay="180"
               className="overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white"
             >
               <img src={image} alt={title} className="h-full min-h-[320px] w-full object-cover" />
-            </motion.div>
+            </div>
           ) : null}
         </div>
       </div>

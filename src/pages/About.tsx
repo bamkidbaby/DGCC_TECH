@@ -1,8 +1,14 @@
 import { useEffect } from "react";
-import { motion } from "framer-motion";
 import CorporatePageHero from "../components/CorporatePageHero";
-import { CTASection, SectionHeader, ShellSection, StatsStrip, SurfaceCard, revealUp, stagger } from "../components/CorporateUI";
-import { brandStats } from "../data/siteContent";
+import {
+  CTASection,
+  SectionHeader,
+  ShellSection,
+  StatsStrip,
+  SurfaceCard,
+  TeamGrid,
+} from "../components/CorporateUI";
+import { brandStats, teamMembers } from "../data/siteContent";
 
 const principles = [
   "Present technology services with clarity and professionalism.",
@@ -55,20 +61,34 @@ export default function About() {
       <ShellSection>
         <div className="mx-auto max-w-7xl">
           <SectionHeader
+            eyebrow="Team"
+            title="The company is presented through clear operating roles, not just service labels."
+            body="Placing the team here strengthens trust at the exact point where visitors are learning who DGCC TECH is, how the company works, and who supports the client experience."
+            align="split"
+          />
+          <div className="mt-12">
+            <TeamGrid items={teamMembers} />
+          </div>
+        </div>
+      </ShellSection>
+
+      <ShellSection>
+        <div className="mx-auto max-w-7xl">
+          <SectionHeader
             eyebrow="Principles"
             title="Three ideas guide how the company shows up online and serves clients."
             body="The goal is to keep the experience useful, credible, and easy to trust."
             align="split"
           />
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={{ once: true }} className="mt-12 grid gap-6 lg:grid-cols-3">
+          <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {principles.map((principle) => (
-              <motion.div key={principle} variants={revealUp}>
+              <div key={principle} data-aos="fade-up">
                 <SurfaceCard className="h-full p-7">
                   <p className="text-lg font-semibold leading-8 text-black">{principle}</p>
                 </SurfaceCard>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </ShellSection>
 

@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
 import type { FormEvent } from "react";
-import { motion } from "framer-motion";
 import CorporatePageHero from "../components/CorporatePageHero";
-import { SectionHeader, ShellSection, SurfaceCard } from "../components/CorporateUI";
+import {
+  SectionHeader,
+  ShellSection,
+  SurfaceCard,
+} from "../components/CorporateUI";
 import {
   officeAddress,
   officeMapLink,
@@ -12,7 +15,42 @@ import {
 
 const FORM_ENDPOINT = ["https://api.", "web3forms.com", "/submit"].join("");
 const ACCESS_KEY = String.fromCharCode(
-  49, 53, 51, 100, 51, 98, 57, 99, 45, 57, 98, 55, 48, 45, 52, 53, 102, 52, 45, 56, 51, 52, 55, 45, 56, 100, 50, 53, 56, 55, 100, 51, 55, 50, 99, 50,
+  49,
+  53,
+  51,
+  100,
+  51,
+  98,
+  57,
+  99,
+  45,
+  57,
+  98,
+  55,
+  48,
+  45,
+  52,
+  53,
+  102,
+  52,
+  45,
+  56,
+  51,
+  52,
+  55,
+  45,
+  56,
+  100,
+  50,
+  53,
+  56,
+  55,
+  100,
+  51,
+  55,
+  50,
+  99,
+  50,
 );
 
 const contactMeta = [
@@ -23,14 +61,14 @@ const contactMeta = [
   },
   {
     label: "WhatsApp",
-    value: "+234 800 000 0000",
+    value: "+234 708 252 3166",
     href: `https://wa.me/${whatsappNumber}`,
   },
   { label: "Office Hours", value: "Mon - Sat / 8:00 AM - 6:00 PM" },
   { label: "Location", value: officeAddress, href: officeMapLink },
   {
     label: "Alt WhatsApp",
-    value: "+234 800 000 0001",
+    value: "+234 704 537 1328",
     href: `https://wa.me/${whatsappSecondaryNumber}`,
   },
 ];
@@ -96,16 +134,13 @@ export default function Contact() {
               body="The contact form is open for websites, design requests, technical support, course enquiries, repairs, and business support needs."
             />
             <SurfaceCard className="mt-8 p-6 sm:p-8">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.2 }}
-                transition={{ duration: 0.45, ease: "easeOut" }}
-                className="mx-auto w-full max-w-xl"
-              >
+              <div data-aos="fade-up" className="mx-auto w-full max-w-xl">
                 <form onSubmit={handleSubmit} className="space-y-5" noValidate>
                   <div className="space-y-2">
-                    <label htmlFor="contact-name" className="text-sm font-medium text-black">
+                    <label
+                      htmlFor="contact-name"
+                      className="text-sm font-medium text-black"
+                    >
                       Full Name
                     </label>
                     <input
@@ -120,7 +155,10 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="contact-email" className="text-sm font-medium text-black">
+                    <label
+                      htmlFor="contact-email"
+                      className="text-sm font-medium text-black"
+                    >
                       Email Address
                     </label>
                     <input
@@ -135,7 +173,10 @@ export default function Contact() {
                   </div>
 
                   <div className="space-y-2">
-                    <label htmlFor="contact-message" className="text-sm font-medium text-black">
+                    <label
+                      htmlFor="contact-message"
+                      className="text-sm font-medium text-black"
+                    >
                       Your Message
                     </label>
                     <textarea
@@ -158,11 +199,13 @@ export default function Contact() {
                 </form>
 
                 {result ? (
-                  <p className={`mt-5 text-sm ${result === "Message sent successfully" ? "text-[#2a308e]" : "text-[#6b7280]"}`}>
+                  <p
+                    className={`mt-5 text-sm ${result === "Message sent successfully" ? "text-[#2a308e]" : "text-[#6b7280]"}`}
+                  >
                     {result}
                   </p>
                 ) : null}
-              </motion.div>
+              </div>
             </SurfaceCard>
           </div>
 
@@ -175,8 +218,14 @@ export default function Contact() {
                 {"href" in item && item.href ? (
                   <a
                     href={item.href}
-                    target={item.href.startsWith("https://") ? "_blank" : undefined}
-                    rel={item.href.startsWith("https://") ? "noreferrer" : undefined}
+                    target={
+                      item.href.startsWith("https://") ? "_blank" : undefined
+                    }
+                    rel={
+                      item.href.startsWith("https://")
+                        ? "noreferrer"
+                        : undefined
+                    }
                     className="mt-3 block text-base text-black transition hover:text-[#2a308e]"
                   >
                     {item.value}
