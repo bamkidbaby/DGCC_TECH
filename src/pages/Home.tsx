@@ -12,20 +12,30 @@ import {
   StatsStrip,
   SurfaceCard,
 } from "../components/CorporateUI";
-import { brandStats, faqs, galleryImages, serviceItems, trainingItems } from "../data/siteContent";
+import LogoSlider from "../components/LogoSlider";
+import {
+  brandStats,
+  faqs,
+  galleryImages,
+  serviceItems,
+  trainingItems,
+} from "../data/siteContent";
 
 const homeProcess = [
   {
     title: "Understand the real need",
-    detail: "We start with the business problem, learner goal, or support issue before recommending a route.",
+    detail:
+      "We start with the business problem, learner goal, or support issue before recommending a route.",
   },
   {
     title: "Match the right service mix",
-    detail: "Training, design, support, repairs, and registration services can be combined around one client need.",
+    detail:
+      "Training, design, support, repairs, and registration services can be combined around one client need.",
   },
   {
     title: "Deliver clearly and professionally",
-    detail: "The final experience stays clean, practical, and easy to follow from first contact to final handover.",
+    detail:
+      "The final experience stays clean, practical, and easy to follow from first contact to final handover.",
   },
 ];
 
@@ -53,11 +63,7 @@ export default function Home() {
         stats={brandStats.slice(0, 3)}
       />
 
-      <ShellSection className="pt-10">
-        <div className="mx-auto max-w-7xl">
-          <StatsStrip items={brandStats} />
-        </div>
-      </ShellSection>
+      <LogoSlider />
 
       <ShellSection>
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.95fr_1.05fr]">
@@ -103,19 +109,21 @@ export default function Home() {
         </div>
       </ShellSection>
 
-      <ShellSection>
-        <div className="mx-auto max-w-7xl">
-          <SectionHeader
-            eyebrow="Training"
-            title="Courses with clear pricing and direct WhatsApp enrollment."
-            body="The training section is structured like a real commercial offer, with dedicated course pages, pricing visibility, and a simple enrollment path."
-            align="split"
-          />
-          <div className="mt-12">
-            <CourseGrid items={trainingItems} />
+      <div className="bg-[#fecb0b]/20">
+        <ShellSection>
+          <div className="mx-auto max-w-7xl">
+            <SectionHeader
+              eyebrow="Training"
+              title="Courses with clear pricing and direct WhatsApp enrollment."
+              body="The training section is structured like a real commercial offer, with dedicated course pages, pricing visibility, and a simple enrollment path."
+              align="split"
+            />
+            <div className="mt-12">
+              <CourseGrid items={trainingItems} />
+            </div>
           </div>
-        </div>
-      </ShellSection>
+        </ShellSection>
+      </div>
 
       <ShellSection>
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.82fr_1.18fr]">

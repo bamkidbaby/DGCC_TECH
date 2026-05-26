@@ -211,18 +211,57 @@ export function CourseCard({
   );
 }
 
+import { FaArrowRight } from "react-icons/fa";
+
 export function CourseGrid({ items }: { items: CourseItem[] }) {
   return (
-    <div className="grid gap-6 lg:grid-cols-2">
+    <div className="grid gap-8 sm:grid-cols-2 xl:grid-cols-3">
       {items.map((item) => (
-        <CourseCard
+        <div
           key={item.slug}
-          title={item.title}
-          summary={item.summary}
-          price={item.price}
-          duration={item.duration}
-          href={`/training/${item.slug}`}
-        />
+          className="group overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-[#2a308e]/20 hover:shadow-xl"
+        >
+          {/* IMAGE */}
+          <div className="relative h-48 w-full overflow-hidden">
+            <img
+              src={item.image}
+              alt={item.title}
+              className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+            />
+
+            {/* subtle top fade only (light touch, not dark overlay) */}
+            <div className="absolute inset-0 bg-gradient-to-t from-white/10 to-transparent" />
+          </div>
+
+          {/* CONTENT */}
+          <div className="p-6">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#2a308e]">
+              DGCC TRAINING
+            </p>
+
+            <h3 className="mt-2 text-xl font-semibold text-black">
+              {item.title}
+            </h3>
+
+            <p className="mt-3 text-sm leading-7 text-[#6b7280]">
+              {item.summary}
+            </p>
+
+            {/* META */}
+            <div className="mt-5 flex items-center justify-between text-sm text-[#6b7280]">
+              <span>{item.duration}</span>
+              <span className="font-semibold text-black">{item.price}</span>
+            </div>
+
+            {/* BUTTON */}
+            <a
+              href={`/training/${item.slug}`}
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-md bg-[#2d3292] px-4 py-2 text-xs font-bold uppercase tracking-widest text-white transition hover:bg-[#fecb0b] hover:text-black"
+            >
+              View Course <FaArrowRight className="text-[11px]" />
+            </a>
+          </div>
+        </div>
       ))}
     </div>
   );
@@ -248,7 +287,13 @@ export function GalleryGrid({
         return (
           <div
             key={item.title}
-            data-aos={item.size === "large" ? "zoom-in" : item.size === "tall" ? "fade-left" : "fade-up"}
+            data-aos={
+              item.size === "large"
+                ? "zoom-in"
+                : item.size === "tall"
+                  ? "fade-left"
+                  : "fade-up"
+            }
             className={span}
           >
             <div className="flex h-full min-h-[200px] flex-col overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white">

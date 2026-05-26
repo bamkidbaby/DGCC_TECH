@@ -14,6 +14,9 @@ const principles = [
   "Present technology services with clarity and professionalism.",
   "Support both business clients and learners with practical guidance.",
   "Build trust through clean communication, not visual noise.",
+  "Focus on solutions that are practical, scalable, and easy to maintain.",
+  "Create a smoother experience for clients through organized workflows and dependable support.",
+  "Keep digital services accessible for students, startups, organizations, and growing businesses.",
 ];
 
 export default function About() {
@@ -39,9 +42,25 @@ export default function About() {
             <SectionHeader
               eyebrow="Company overview"
               title="DGCC TECH brings multiple digital and technical support lines under one clear brand."
-              body="That includes websites, design, training, computer support, registrations, and related services that people often need from one dependable source."
+              body="We operate as a structured technology service hub delivering development, design, training, repairs, and digital support with consistency and reliability."
             />
+
+            <div className="mt-6 space-y-4 text-sm leading-7 text-[#52525b] sm:text-base">
+              <p>
+                DGCC TECH is built on the idea that technology services should
+                not feel scattered or difficult to access. We bring everything
+                together into a single system that is easy to understand and
+                dependable to use.
+              </p>
+
+              <p>
+                Our focus is delivering real outcomes—helping clients complete
+                tasks, build skills, and improve digital systems without
+                unnecessary complexity or confusion.
+              </p>
+            </div>
           </SurfaceCard>
+
           <SurfaceCard className="overflow-hidden">
             <img
               src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1400&q=80"
@@ -59,13 +78,52 @@ export default function About() {
       </ShellSection>
 
       <ShellSection>
+        <div className="mx-auto max-w-5xl">
+          <SurfaceCard className="p-8 sm:p-10">
+            <div className="grid gap-8 lg:grid-cols-2">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.16em] text-[#2a308e]">
+                  Operational Focus
+                </p>
+
+                <h3 className="mt-4 text-3xl font-semibold leading-tight tracking-tight text-black">
+                  Built to support both service delivery and digital learning.
+                </h3>
+              </div>
+
+              <div className="space-y-4 text-sm leading-7 text-[#52525b] sm:text-base">
+                <p>
+                  DGCC TECH combines practical technology services with hands-on
+                  guidance that helps clients understand and use digital tools
+                  effectively.
+                </p>
+
+                <p>
+                  We don’t only provide solutions—we ensure users can actually
+                  work with them confidently, whether for business, education,
+                  or personal growth.
+                </p>
+              </div>
+            </div>
+          </SurfaceCard>
+        </div>
+      </ShellSection>
+
+      <ShellSection>
         <div className="mx-auto max-w-7xl">
           <SectionHeader
             eyebrow="Team"
             title="The company is presented through clear operating roles, not just service labels."
-            body="Placing the team here strengthens trust at the exact point where visitors are learning who DGCC TECH is, how the company works, and who supports the client experience."
+            body="Every role within DGCC TECH contributes to a structured experience that prioritizes clarity, communication, and reliable delivery."
             align="split"
           />
+
+          <p className="mt-6 max-w-3xl text-sm leading-7 text-[#52525b] sm:text-base">
+            DGCC TECH operates as a coordinated team where technical work,
+            client support, design, and training all work together to ensure
+            consistent service quality across every project.
+          </p>
+
           <div className="mt-12">
             <TeamGrid items={teamMembers} />
           </div>
@@ -80,11 +138,14 @@ export default function About() {
             body="The goal is to keep the experience useful, credible, and easy to trust."
             align="split"
           />
+
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
             {principles.map((principle) => (
               <div key={principle} data-aos="fade-up">
                 <SurfaceCard className="h-full p-7">
-                  <p className="text-lg font-semibold leading-8 text-black">{principle}</p>
+                  <p className="text-lg font-semibold leading-8 text-black">
+                    {principle}
+                  </p>
                 </SurfaceCard>
               </div>
             ))}
@@ -94,7 +155,7 @@ export default function About() {
 
       <CTASection
         title="If you need technology support that feels more organized and more professional, DGCC TECH is built for that."
-        body="The team can support one focused request or help shape a broader service path around your business or training need."
+        body="We help clients move from ideas or problems to structured digital solutions that actually work in real environments."
         primary={{ label: "Start a conversation", href: "/contact" }}
       />
     </>

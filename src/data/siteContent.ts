@@ -106,6 +106,45 @@ export const brandStats: StatItem[] = [
   },
 ];
 
+// ================================
+// LOGO IPSUM SLIDER DATA
+// ================================
+
+export const partnerLogos = [
+  {
+    name: "Google",
+    image: "https://www.vectorlogo.zone/logos/google/google-ar21.svg",
+  },
+  {
+    name: "Microsoft",
+    image: "https://www.vectorlogo.zone/logos/microsoft/microsoft-ar21.svg",
+  },
+  {
+    name: "Spotify",
+    image: "https://www.vectorlogo.zone/logos/spotify/spotify-ar21.svg",
+  },
+  {
+    name: "Netflix",
+    image: "https://www.vectorlogo.zone/logos/netflix/netflix-ar21.svg",
+  },
+  {
+    name: "Figma",
+    image: "https://www.vectorlogo.zone/logos/figma/figma-ar21.svg",
+  },
+  {
+    name: "Airbnb",
+    image: "https://www.vectorlogo.zone/logos/airbnb/airbnb-ar21.svg",
+  },
+  {
+    name: "Slack",
+    image: "https://www.vectorlogo.zone/logos/slack/slack-ar21.svg",
+  },
+  {
+    name: "Dropbox",
+    image: "https://www.vectorlogo.zone/logos/dropbox/dropbox-ar21.svg",
+  },
+];
+
 export const serviceItems: ServiceItem[] = [
   {
     kind: "service",
