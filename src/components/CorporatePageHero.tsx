@@ -71,8 +71,11 @@ export default function DgccHero({
         }
 
         .dgcc-ring:nth-child(1) { animation-delay: 0s; }
-        .dgcc-ring:nth-child(2) { animation-delay: 1s; }
-        .dgcc-ring:nth-child(3) { animation-delay: 2s; }
+        .dgcc-ring:nth-child(2) { animation-delay: 0.6s; }
+        .dgcc-ring:nth-child(3) { animation-delay: 1.2s; }
+        .dgcc-ring:nth-child(4) { animation-delay: 1.8s; }
+        .dgcc-ring:nth-child(5) { animation-delay: 2.4s; }
+        .dgcc-ring:nth-child(6) { animation-delay: 3s; }
       `}</style>
 
       <section className="relative flex min-h-[520px] flex-col overflow-hidden bg-[#2d3292] lg:min-h-[560px] lg:flex-row">
@@ -81,6 +84,18 @@ export default function DgccHero({
           <div className="absolute inset-0 bg-gradient-to-br from-[#2d3292] via-[#262b75] to-[#1b1f44] opacity-95" />
 
           {/* Ripple Rings */}
+          <span
+            className="dgcc-ring"
+            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
+          />
+          <span
+            className="dgcc-ring"
+            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
+          />
+          <span
+            className="dgcc-ring"
+            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
+          />
           <span
             className="dgcc-ring"
             style={{ width: 220, height: 220, bottom: -60, left: -60 }}
