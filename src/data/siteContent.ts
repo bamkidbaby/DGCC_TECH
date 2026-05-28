@@ -58,10 +58,8 @@ export function getCourseWhatsAppLink(courseName: string) {
 }
 
 export const trainingPolicies = [
-  "Registration Form: ₦2,000",
-  "Handout & Resources for 2/3 Month Courses: ₦4,000",
-  "Handout & Resources for 4/6 Month Courses: ₦6,000",
-  "70% of the tuition fee must be paid before commencement of training.",
+  "Course fees combine tuition, form fee, and handouts.",
+  "70% of the total fee must be paid before commencement of training.",
   "Students who complete their desired course will undergo Industrial Training (IT) at a given place.",
 ];
 
@@ -203,7 +201,7 @@ export const serviceItems: ServiceItem[] = [
   {
     kind: "service",
     slug: "graphic-design",
-    title: "Graphic Design",
+    title: "General Printing",
     eyebrow: "Visual Communication",
     summary:
       "Graphic design support for businesses, schools, campaigns, and product marketing with work that feels clean, intentional, and print-ready.",
@@ -257,13 +255,13 @@ export const serviceItems: ServiceItem[] = [
   {
     kind: "service",
     slug: "computer-services",
-    title: "Computer Services",
+    title: "Computer Services (Sales & Repairs)",
     eyebrow: "Technical Support",
     summary:
       "Practical computer support for diagnostics, upgrades, maintenance, and performance recovery across personal and office systems.",
-    hero: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
+    hero: "https://images.unsplash.com/photo-1629131726692-1accd0c53ce0?auto=format&fit=crop&w=1600&q=80",
     image:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=1200&q=80",
+      "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?auto=format&fit=crop&w=1200&q=80",
     stats: [
       { label: "Diagnostics", value: "Same Day" },
       { label: "Device Coverage", value: "Laptop + Desktop" },
@@ -508,7 +506,7 @@ function buildCourse({
     audience,
     stats: [
       { label: "Duration", value: duration },
-      { label: "Tuition", value: price },
+      { label: "Total Fee", value: price },
       { label: "Outcome", value: outcome },
     ],
     features: content,
@@ -534,7 +532,7 @@ function buildCourse({
         title: "Course overview",
         paragraphs: [
           summary,
-          `This ${duration.toLowerCase()} program is structured to give learners practical confidence in ${title.toLowerCase()} with a clear tuition of ${price}.`,
+          `This ${duration.toLowerCase()} program is structured to give learners practical confidence in ${title.toLowerCase()} with a combined fee of ${price}.`,
         ],
       },
       {
@@ -555,7 +553,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A foundational office productivity course for learners who want confidence with typing, computer use, Microsoft Office basics, and internet work.",
     duration: "2 Months",
-    price: "₦35,000",
+    price: "₦40,000",
     audience:
       "Beginners, students, office support staff, and first-time computer users",
     hero: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
@@ -577,7 +575,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A practical preparation program for candidates who need confidence with CBT environments, speed, accuracy, and test-day computer use.",
     duration: "Flexible Schedule",
-    price: "Contact for Pricing",
+    price: "₦16,000",
     audience:
       "Exam candidates, admission applicants, and learners preparing for computer-based assessments",
     hero: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1600&q=80",
@@ -599,7 +597,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A practical desktop publishing track for learners who want strong office skills, presentation basics, and device-connected production knowledge.",
     duration: "3 Months",
-    price: "₦35,000",
+    price: "₦50,000",
     audience:
       "Beginners, office assistants, school administrators, and publishing support learners",
     hero: "https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&w=1600&q=80",
@@ -624,7 +622,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A graphics fundamentals course covering design tools, presentation work, and production support for print-oriented visual tasks.",
     duration: "3 Months",
-    price: "₦35,000",
+    price: "₦50,000",
     audience:
       "Beginners, aspiring designers, and learners preparing for print and graphics support work",
     hero: "https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1600&q=80",
@@ -647,7 +645,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A business application course that combines core computer skills with spreadsheet, database, and office tools useful for accounting workflows.",
     duration: "4 Months",
-    price: "₦45,000",
+    price: "₦72,000",
     audience:
       "Students, office administrators, clerks, and entry-level accounting support learners",
     hero: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&w=1600&q=80",
@@ -672,7 +670,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A diploma program focused on planning, designing, and launching practical business websites using web tools, graphics, and WordPress workflows.",
     duration: "3 Months",
-    price: "₦55,000",
+    price: "₦70,000",
     audience:
       "Aspiring web designers, freelancers, and business-minded learners entering digital services",
     hero: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80",
@@ -694,7 +692,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "An extended publishing diploma that combines office productivity, presentation, graphics, internet use, and print-support operations.",
     duration: "6 Months",
-    price: "₦65,000",
+    price: "₦82,000",
     audience:
       "Learners seeking broader office, publishing, and print production competence",
     hero: "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80",
@@ -720,7 +718,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A longer graphics diploma for learners who want stronger visual production skills across Corel Draw, Photoshop, presentation work, and design support tasks.",
     duration: "6 Months",
-    price: "₦65,000",
+    price: "₦82,000",
     audience:
       "Aspiring professional designers, print operators, and creative service providers",
     hero: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=1600&q=80",
@@ -746,7 +744,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A hands-on technical diploma for learners who want practical experience with laptop systems, operating systems, hardware, software setup, and repair troubleshooting.",
     duration: "6 Months",
-    price: "₦65,000",
+    price: "₦82,000",
     audience:
       "Technicians in training, support staff, and learners interested in repair and maintenance work",
     hero: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1600&q=80",
@@ -772,7 +770,7 @@ export const trainingItems: CourseItem[] = [
     summary:
       "A development-focused diploma covering front-end and modern web application foundations, including JavaScript, Node, React, databases, and Web3 concepts.",
     duration: "4 Months",
-    price: "₦70,000",
+    price: "₦97,000",
     audience:
       "Aspiring developers, technical beginners, and learners moving into software delivery",
     hero: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=1600&q=80",

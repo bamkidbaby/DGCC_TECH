@@ -53,7 +53,7 @@ const services = [
     id: "repairs",
     icon: <FaTools />,
     label: "Repairs",
-    title: "Device Repairs",
+    title: "Sales & Repairs",
     tagline: "Reliable repairs done properly.",
     description:
       "Professional laptop, desktop, and phone repairs with fast diagnostics and quality maintenance solutions you can trust.",
@@ -71,7 +71,7 @@ const services = [
     id: "design",
     icon: <FaPaintBrush />,
     label: "Design",
-    title: "Graphic Design",
+    title: "General Printing",
     tagline: "Creative visuals that stand out.",
     description:
       "We create professional branding materials, social media graphics, flyers, logos, and visual identities that leave lasting impressions.",
