@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FiArrowRight } from "react-icons/fi";
+import { motion } from "framer-motion";
 
 type HeroStat = {
   label: string;
@@ -27,23 +28,23 @@ function ActionLink({
   primary?: boolean;
 }) {
   const className = primary
-    ? "inline-flex items-center gap-2 rounded-md bg-[#fecb0b] px-6 py-3 text-sm font-bold uppercase tracking-widest text-black transition-all duration-200 hover:bg-[#f5c000] hover:scale-[1.02]"
-    : "inline-flex items-center gap-2 rounded-md border border-white/30 px-6 py-3 text-sm font-bold uppercase tracking-widest text-white transition-all duration-200 hover:bg-white/10 hover:scale-[1.02]";
+    ? "group relative inline-flex items-center gap-3 overflow-hidden rounded-none border border-[#fecb0b] bg-[#fecb0b] px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-black transition-all hover:bg-transparent hover:text-[#fecb0b]"
+    : "group relative inline-flex items-center gap-3 overflow-hidden rounded-none border border-white/30 bg-transparent px-7 py-3.5 text-sm font-bold uppercase tracking-widest text-white transition-all hover:border-white hover:bg-white hover:text-[#2d3292]";
 
   return href.startsWith("/") ? (
     <Link to={href} className={className}>
-      {label}
-      <FiArrowRight className="h-4 w-4" />
+      <span className="relative z-10">{label}</span>
+      <FiArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
     </Link>
   ) : (
     <a href={href} className={className}>
-      {label}
-      <FiArrowRight className="h-4 w-4" />
+      <span className="relative z-10">{label}</span>
+      <FiArrowRight className="relative z-10 h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
     </a>
   );
 }
 
-export default function DgccHero({
+export default function CorporatePageHero({
   badge,
   title,
   titleAccent,
@@ -53,168 +54,123 @@ export default function DgccHero({
   secondaryCta,
   stats = [],
 }: Props) {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.1,
+      },
+    },
+  };
+
+  const itemVariants: any = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
   return (
-    <>
-      <style>{`
-        @keyframes ripple {
-          0%   { transform: scale(0.85); opacity: 0.5; }
-          50%  { opacity: 0.2; }
-          100% { transform: scale(1.35); opacity: 0; }
-        }
+    <section className="relative min-h-[650px] overflow-hidden bg-[#2d3292] lg:min-h-[700px]">
+      <div
+        className="absolute inset-0 opacity-[0.06] pointer-events-none"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.8) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.8) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }}
+      />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#2d3292]/80 via-transparent to-[#1b1f44] pointer-events-none" />
 
-        .dgcc-ring {
-          position: absolute;
-          border-radius: 50%;
-          border: 1.5px solid rgba(255,255,255,0.18);
-          animation: ripple 3s ease-out infinite;
-          pointer-events: none;
-        }
-
-        .dgcc-ring:nth-child(1) { animation-delay: 0s; }
-        .dgcc-ring:nth-child(2) { animation-delay: 0.6s; }
-        .dgcc-ring:nth-child(3) { animation-delay: 1.2s; }
-        .dgcc-ring:nth-child(4) { animation-delay: 1.8s; }
-        .dgcc-ring:nth-child(5) { animation-delay: 2.4s; }
-        .dgcc-ring:nth-child(6) { animation-delay: 3s; }
-      `}</style>
-
-      <section className="relative flex min-h-[520px] flex-col overflow-hidden bg-[#2d3292] lg:min-h-[560px] lg:flex-row">
-        {/* Left Panel */}
-        <div className="relative z-10 flex w-full flex-col justify-center px-6 py-12 sm:px-10 lg:w-[52%] lg:px-16">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#2d3292] via-[#262b75] to-[#1b1f44] opacity-95" />
-
-          {/* Ripple Rings */}
-          <span
-            className="dgcc-ring"
-            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
-          />
-          <span
-            className="dgcc-ring"
-            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
-          />
-          <span
-            className="dgcc-ring"
-            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
-          />
-          <span
-            className="dgcc-ring"
-            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
-          />
-          <span
-            className="dgcc-ring"
-            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
-          />
-          <span
-            className="dgcc-ring"
-            style={{ width: 220, height: 220, bottom: -60, left: -60 }}
-          />
-
-          <div className="relative z-10">
-            {/* Badge */}
-            <p
-              data-aos="fade-down"
-              data-aos-duration="400"
-              className="text-xs font-extrabold uppercase tracking-[0.25em] text-[#fecb0b]"
-            >
+      <div className="mx-auto flex min-h-[650px] max-w-7xl flex-col justify-center px-6 py-20 lg:min-h-[700px] lg:flex-row lg:items-center lg:gap-16 lg:px-8 lg:py-24">
+        <motion.div
+          className="relative z-10 w-full lg:w-[55%]"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div variants={itemVariants} className="flex items-center gap-4">
+            <span className="h-px w-8 bg-[#fecb0b]"></span>
+            <p className="text-xs font-bold uppercase tracking-[0.3em] text-[#fecb0b]">
               {badge}
             </p>
+          </motion.div>
 
-            {/* Title */}
-            <h1
-              data-aos="fade-down"
-              data-aos-duration="450"
-              data-aos-delay="90"
-              className="mt-4 text-3xl font-light leading-tight tracking-tight text-white sm:text-4xl lg:text-5xl"
-            >
-              {titleAccent ? (
-                <>
-                  <span className="font-extrabold text-[#fecb0b]">
-                    {titleAccent}
-                  </span>
-                  <br />
-                  {title}
-                </>
-              ) : (
-                title
-              )}
-            </h1>
-
-            {/* Subtitle */}
-            <p
-              data-aos="fade-down"
-              data-aos-duration="450"
-              data-aos-delay="160"
-              className="mt-5 max-w-xl text-base leading-8 text-white/75 sm:text-lg"
-            >
-              {subtitle}
-            </p>
-
-            {/* CTA Buttons */}
-            {(cta || secondaryCta) && (
-              <div
-                data-aos="fade-down"
-                data-aos-duration="450"
-                data-aos-delay="230"
-                className="mt-8 flex flex-wrap gap-4"
-              >
-                {cta && (
-                  <ActionLink href={cta.href} label={cta.label} primary />
-                )}
-
-                {secondaryCta && (
-                  <ActionLink
-                    href={secondaryCta.href}
-                    label={secondaryCta.label}
-                  />
-                )}
-              </div>
-            )}
-
-            {/* Stats */}
-            {stats.length > 0 && (
-              <div className="mt-10 grid gap-4 sm:grid-cols-3">
-                {stats.map((stat, i) => (
-                  <div
-                    key={stat.label}
-                    data-aos="zoom-in"
-                    data-aos-duration="400"
-                    data-aos-delay={280 + i * 80}
-                    className="rounded-2xl border border-white/10 bg-white/10 p-5 backdrop-blur-sm"
-                  >
-                    <p className="text-2xl font-bold text-white">
-                      {stat.value}
-                    </p>
-
-                    <p className="mt-2 text-sm leading-6 text-white/65">
-                      {stat.label}
-                    </p>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* Right Panel */}
-        {image && (
-          <div
-            data-aos="fade-left"
-            data-aos-duration="700"
-            data-aos-delay="180"
-            className="relative w-full overflow-hidden lg:w-[48%]"
+          <motion.h1
+            variants={itemVariants}
+            className="mt-6 text-4xl font-light leading-[1.15] tracking-tight text-white sm:text-5xl lg:text-6xl"
           >
-            <div className="absolute inset-0 z-10 bg-[#2d3292]/30" />
+            {titleAccent ? (
+              <>
+                <span className="block font-extrabold text-[#fecb0b]">
+                  {titleAccent}
+                </span>
+                {title}
+              </>
+            ) : (
+              title
+            )}
+          </motion.h1>
 
-            <div className="absolute bottom-0 left-0 z-20 h-28 w-28 -translate-x-1/2 translate-y-1/2 rounded-full bg-[#fecb0b]/20" />
+          <motion.p
+            variants={itemVariants}
+            className="mt-6 max-w-lg text-lg leading-relaxed text-white/80"
+          >
+            {subtitle}
+          </motion.p>
 
-            <img
-              src={image}
-              alt=""
-              className="h-[320px] w-full object-cover sm:h-[420px] lg:h-full"
-            />
-          </div>
+          {(cta || secondaryCta) && (
+            <motion.div variants={itemVariants} className="mt-10 flex flex-wrap gap-4">
+              {cta && <ActionLink href={cta.href} label={cta.label} primary />}
+              {secondaryCta && (
+                <ActionLink href={secondaryCta.href} label={secondaryCta.label} />
+              )}
+            </motion.div>
+          )}
+
+          {stats.length > 0 && (
+            <motion.div
+              variants={itemVariants}
+              className="mt-16 grid grid-cols-2 gap-6 border-t border-white/10 pt-8 sm:grid-cols-3"
+            >
+              {stats.map((stat) => (
+                <div key={stat.label} className="flex flex-col">
+                  <p className="text-3xl font-extrabold tracking-tight text-white">
+                    {stat.value}
+                  </p>
+                  <p className="mt-2 text-xs font-semibold uppercase tracking-wider text-white/60">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
+          )}
+        </motion.div>
+
+        {image && (
+          <motion.div
+            className="relative mt-16 w-full lg:mt-0 lg:w-[45%]"
+            initial={{ opacity: 0, x: 40 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
+            <div className="absolute -left-4 -top-4 bottom-8 right-8 border border-[#fecb0b]/30 z-0 hidden lg:block" />
+            <div className="absolute -bottom-4 -right-4 top-8 left-8 border border-white/10 z-0 hidden lg:block" />
+
+            <div className="relative z-10 overflow-hidden bg-[#1b1f44] aspect-[4/5] w-full max-w-md mx-auto lg:max-w-none shadow-2xl">
+              <motion.img
+                src={image}
+                alt="Corporate Hero"
+                className="h-full w-full object-cover grayscale-[15%]"
+                initial={{ scale: 1.1 }}
+                animate={{ scale: 1 }}
+                transition={{ duration: 1.5, ease: "easeOut" }}
+              />
+              <div className="absolute inset-0 border border-white/10 pointer-events-none" />
+            </div>
+          </motion.div>
         )}
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

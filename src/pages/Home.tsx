@@ -108,8 +108,17 @@ export default function Home() {
         </div>
       </ShellSection>
 
-      <div className="bg-[#fecb0b]/20">
-        <ShellSection>
+      <div className="relative border-y border-[#e5e7eb] bg-amber-50 overflow-hidden">
+        {/* Subtle structural grid pattern */}
+        <div 
+          className="absolute inset-0 opacity-[0.03] pointer-events-none" 
+          style={{ 
+            backgroundImage: "linear-gradient(#000 1px, transparent 1px), linear-gradient(90deg, #000 1px, transparent 1px)", 
+            backgroundSize: "32px 32px" 
+          }}
+        />
+        
+        <ShellSection className="relative z-10">
           <div className="mx-auto max-w-7xl">
             <SectionHeader
               eyebrow="Training"
@@ -117,7 +126,7 @@ export default function Home() {
               body="The training section is structured like a real commercial offer, with dedicated course pages, pricing visibility, and a simple enrollment path."
               align="split"
             />
-            <div className="mt-12">
+            <div className="mt-10 sm:mt-12 lg:mt-16">
               <CourseGrid items={trainingItems} />
             </div>
           </div>

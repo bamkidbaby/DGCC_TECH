@@ -10,6 +10,7 @@ const navItems = [
   { label: "Training", href: "/training" },
   { label: "Repairs", href: "/repairs" },
   { label: "Registration", href: "/online-registration" },
+  { label: "Blog", href: "/blog" },
   { label: "Gallery", href: "/gallery" },
   { label: "Contact", href: "/contact" },
 ];
@@ -77,7 +78,7 @@ export default function Navbar() {
           <button
             type="button"
             onClick={() => setOpen((value) => !value)}
-            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/6 text-black xl:hidden"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/6 text-white xl:hidden"
             aria-label="Toggle navigation"
           >
             <span className="relative block h-4 w-5">

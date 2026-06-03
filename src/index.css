@@ -56,18 +56,10 @@ a {
   font-family: "Manrope", sans-serif;
 }
 
-button,
-input[type="button"],
-input[type="submit"],
-input[type="reset"],
 a[class*="rounded"][class*="bg-"][class*="text-white"] {
   color: #ffffff !important;
 }
 
-button:hover,
-input[type="button"]:hover,
-input[type="submit"]:hover,
-input[type="reset"]:hover,
 a[class*="rounded"][class*="bg-"][class*="text-white"]:hover {
   color: #000000 !important;
 }

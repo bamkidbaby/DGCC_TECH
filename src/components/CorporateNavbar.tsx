@@ -11,6 +11,7 @@ const navItems = [
   { label: "Repairs", href: "/repairs" },
   { label: "Registration", href: "/online-registration" },
   { label: "Gallery", href: "/gallery" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -22,16 +23,27 @@ export default function CorporateNavbar() {
     <header className="sticky top-0 z-50 border-b border-[#e5e7eb] bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link to="/" className="flex items-center gap-3">
-          <img src={logo} alt="DGCC TECH" className="h-11 w-11 object-contain" />
+          <img
+            src={logo}
+            alt="DGCC TECH"
+            className="h-11 w-11 object-contain"
+          />
           <div>
-            <p className="text-base font-semibold tracking-tight text-black">DGCC TECH</p>
-            <p className="text-xs uppercase tracking-[0.16em] text-[#6b7280]">Connecting the dots in tech</p>
+            <p className="text-base font-semibold tracking-tight text-black">
+              DGCC TECH
+            </p>
+            <p className="text-[10px] uppercase tracking-[0.16em] text-[#6b7280] md:text-xs">
+              Connecting the dots in tech
+            </p>
           </div>
         </Link>
 
         <nav className="hidden items-center gap-7 lg:flex">
           {navItems.map((item) => {
-            const active = item.href === "/" ? location.pathname === "/" : location.pathname.startsWith(item.href);
+            const active =
+              item.href === "/"
+                ? location.pathname === "/"
+                : location.pathname.startsWith(item.href);
 
             return (
               <Link

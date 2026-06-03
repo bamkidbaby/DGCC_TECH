@@ -9,6 +9,8 @@ import Repairs from "./pages/Repairs";
 import OnlineRegistrations from "./pages/OnlineRegistrations";
 import Gallery from "./pages/Gallery";
 import Contact from "./pages/Contact";
+import Blog from "./pages/Blog";
+import BlogArticle from "./pages/BlogArticle";
 import SubPage from "./pages/SubPage";
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
           <Route path="/repairs" element={<Repairs />} />
           <Route path="/online-registration" element={<OnlineRegistrations />} />
           <Route path="/gallery" element={<Gallery />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<Home />} />
         </Routes>
